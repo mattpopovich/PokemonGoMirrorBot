@@ -2,9 +2,9 @@ import random
 import time
 import subprocess
 import config
+from cliclick import Cliclick
+import datetime
 
-seed = 12345
-random.seed(seed)
 
 def randomize_location(location, randomness):
     """
@@ -20,10 +20,10 @@ def randomize_location(location, randomness):
     location_x, location_y = location
     random_offset_x = random.randint(-randomness, randomness)
     random_offset_y = random.randint(-randomness, randomness)
-    
+
     new_x = location_x + random_offset_x
     new_y = location_y + random_offset_y
-    
+
     return [new_x, new_y]
 
 def random_sleep(base_sleep_time, randomness):
@@ -37,41 +37,13 @@ def random_sleep(base_sleep_time, randomness):
     Returns:
     - float: The actual sleep time.
     """
-    global seed
-    seed += 1
-    random.seed(seed)
-    
     offset = random.uniform(-randomness, randomness)
     actual_sleep_time = max(0, base_sleep_time + offset)
-    
+
+    print(f"  Sleeping for {actual_sleep_time}")
     time.sleep(actual_sleep_time)
-    
+
     return actual_sleep_time
-
-def cliclick(command):
-    """
-    Executes the cliclick command in the terminal.
-    
-    Args:
-    - command (str): The cliclick command to be executed.
-    """
-    try:
-        subprocess.run(["cliclick", command], check=True)
-        print(f"executed {command}")
-    except subprocess.CalledProcessError as e:
-        print(f"Error executing cliclick command: {e}")
-
-def format_command(location):
-    """
-    Formats the location list into a string command for cliclick.
-    
-    Args:
-    - location (list): The location as [x, y].
-    
-    Returns:
-    - str: The formatted command for cliclick.
-    """
-    return f"c:{location[0]},{location[1]}"
 
 # Access the coordinates from the active system
 startTrade = config.ACTIVE_COORDINATES['startTrade']
@@ -82,33 +54,46 @@ x = config.ACTIVE_COORDINATES['x']
 
 randomness = 10
 
+# Get the current date and time up to the current minute
+now = datetime.datetime.now().replace(second=0, microsecond=0)
+
+# Convert it to a seed value
+seed_value = int(now.strftime("%Y%m%d%H%M"))  # e.g., 202411081231 for Nov 8, 2024, 12:31
+
+# Use the seed value for random operations
+modified_seed = seed_value    # Optional if you want to modify seeds between traders
+random.seed(modified_seed)
+same_pseudo_rng = random.Random(int(now.strftime("%Y%m%d%H%M")))
+
 # Execute cliclick commands with randomized locations
-cliclick(format_command(randomize_location(startTrade, randomness)))
+cliclick = Cliclick()
+cliclick.click(randomize_location(startTrade, randomness))
 
 for _ in range(10):
 
-    # Use if you want to have two different seeds for the two traders but 
-    #   still keep them in sync
-    remaining_sleep = 35.0
-    
+    # Use if have two different seeds for the two traders
+    #   (so that clicks won't be at the exact same time)
+    #   but still keep them in sync
+    remaining_sleep = same_pseudo_rng.uniform(45, 55)
+
     print(f"Clicking on start trade")
-    cliclick(format_command(randomize_location(startTrade, randomness)))
+    cliclick.click(randomize_location(startTrade, randomness))
     remaining_sleep -= random_sleep(7.0, 2.0)
-    
+
     print("Clicking on bottom center pokemon")
-    cliclick(format_command(randomize_location(bottomCenterPokemon, randomness)))
+    cliclick.click(randomize_location(bottomCenterPokemon, randomness))
     remaining_sleep -= random_sleep(4.0, 2.0)
-    
-    print("clicking on next")
-    cliclick(format_command(randomize_location(next_button, randomness)))
+
+    print("Clicking on next")
+    cliclick.click(randomize_location(next_button, randomness))
     remaining_sleep -= random_sleep(5.0, 2.0)
-    
-    print("clicking on confirm")
-    cliclick(format_command(randomize_location(confirm, randomness)))
+
+    print("Clicking on confirm")
+    cliclick.click(randomize_location(confirm, randomness))
     remaining_sleep -= random_sleep(18.0, 2.0)
-    
-    print("clicking on X")
-    cliclick(format_command(randomize_location(x, randomness)))
+
+    print("Clicking on X")
+    cliclick.click(randomize_location(x, randomness))
     remaining_sleep -= random_sleep(5.0, 2.0)
 
     print(f"Sleeping for {remaining_sleep} to keep traders in sync")

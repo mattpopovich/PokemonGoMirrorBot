@@ -1,6 +1,7 @@
 import random
 import time
 import subprocess
+import config
 
 seed = 12345
 random.seed(seed)
@@ -72,43 +73,43 @@ def format_command(location):
     """
     return f"c:{location[0]},{location[1]}"
 
-# Locations as lists
-startTrade = [3377, 1285]
-bottomCenterPokemon = [3266, 1321]
-next_button = [3268, 1321]
-confirm = [3141, 1086]
-x = [3268, 1389]
+# Access the coordinates from the active system
+startTrade = config.ACTIVE_COORDINATES['startTrade']
+bottomCenterPokemon = config.ACTIVE_COORDINATES['bottomCenterPokemon']
+next_button = config.ACTIVE_COORDINATES['next_button']
+confirm = config.ACTIVE_COORDINATES['confirm']
+x = config.ACTIVE_COORDINATES['x']
+
 randomness = 10
 
 # Execute cliclick commands with randomized locations
 cliclick(format_command(randomize_location(startTrade, randomness)))
 
 for _ in range(10):
-    remaining_sleep = 45.0
+
+    # Use if you want to have two different seeds for the two traders but 
+    #   still keep them in sync
+    remaining_sleep = 35.0
     
     print(f"Clicking on start trade")
     cliclick(format_command(randomize_location(startTrade, randomness)))
-    remaining_sleep -= random_sleep(5.0, 2.0)
-    print(f"Remaining sleep: {remaining_sleep}")
+    remaining_sleep -= random_sleep(7.0, 2.0)
     
     print("Clicking on bottom center pokemon")
     cliclick(format_command(randomize_location(bottomCenterPokemon, randomness)))
     remaining_sleep -= random_sleep(4.0, 2.0)
-    print(f"Remaining sleep: {remaining_sleep}")
     
     print("clicking on next")
     cliclick(format_command(randomize_location(next_button, randomness)))
     remaining_sleep -= random_sleep(5.0, 2.0)
-    print(f"Remaining sleep: {remaining_sleep}")
     
     print("clicking on confirm")
     cliclick(format_command(randomize_location(confirm, randomness)))
-    remaining_sleep -= random_sleep(14.0, 2.0)
-    print(f"Remaining sleep: {remaining_sleep}")
+    remaining_sleep -= random_sleep(18.0, 2.0)
     
     print("clicking on X")
     cliclick(format_command(randomize_location(x, randomness)))
     remaining_sleep -= random_sleep(5.0, 2.0)
-    print(f"Remaining sleep: {remaining_sleep}")
-    
+
+    print(f"Sleeping for {remaining_sleep} to keep traders in sync")
     time.sleep(max(0, remaining_sleep))

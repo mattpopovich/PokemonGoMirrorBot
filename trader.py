@@ -71,6 +71,7 @@ seed_value = int(now.strftime("%Y%m%d%H%M"))  # e.g., 202411081231 for Nov 8, 20
 # Use the seed value for random operations
 modified_seed = seed_value + 1 if change_delay else seed_value
 random.seed(modified_seed)
+# A common PRNG between traders
 same_pseudo_rng = random.Random(int(now.strftime("%Y%m%d%H%M")))
 
 # Execute cliclick commands with randomized locations
@@ -89,7 +90,7 @@ for _ in range(5):
     cliclick.click(randomize_location(start_trade_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(7.0, 1.5)
 
-    print("Clicking on bottom center pokemon")
+    print("Clicking on first pokemon available to trade")
     cliclick.click(randomize_location(first_pokemon_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(4.0, 1.5)
 

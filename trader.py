@@ -94,7 +94,7 @@ for _ in range(40):
 
     print("Clicking on first pokemon available to trade")
     cliclick.click(randomize_location(first_pokemon_coordinates, pixel_randomness))
-    remaining_sleep -= random_sleep(4.0, 1.5)
+    remaining_sleep -= random_sleep(5.0, 1.5)
 
     print("Clicking on next")
     cliclick.click(randomize_location(next_button_coordinates, pixel_randomness))

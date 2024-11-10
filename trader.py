@@ -76,9 +76,11 @@ same_pseudo_rng = random.Random(int(now.strftime("%Y%m%d%H%M")))
 
 # Execute cliclick commands with randomized locations
 cliclick = Cliclick()
+
+# Make screen mirroring the "active" window
 cliclick.click(randomize_location(start_trade_coordinates, pixel_randomness))
 
-for _ in range(5):
+for _ in range(40):
 
     # Use if have two different seeds for the two traders
     #   (so that clicks won't be at the exact same time)
@@ -100,7 +102,7 @@ for _ in range(5):
 
     print("Clicking on confirm")
     cliclick.click(randomize_location(confirm_button_coordinates, pixel_randomness))
-    remaining_sleep -= random_sleep(18.0, 1.5)
+    remaining_sleep -= random_sleep(20.0, 1.5)
 
     print("Clicking on X")
     cliclick.click(randomize_location(x_button_coordinates, pixel_randomness))

@@ -12,6 +12,7 @@ import subprocess
 import config
 from cliclick import Cliclick
 import datetime
+import sys
 
 
 def randomize_location(location, pixel_randomness):
@@ -53,15 +54,27 @@ def random_sleep(base_sleep_time_s, randomness_s):
 
     return actual_sleep_time
 
+def ensure_pokemon_details_screen(first_pokemon_health_coordinates):
+    """
+    This function ensures that you are currently on the "pokemon details screen".
+    If not, the program will exit
+    """
+    color = cliclick.get_color(first_pokemon_health_coordinates)
+    expected_color = "255 255 255"
+    if color != expected_color:
+        sys.exit(f"Likely not at Pokemon details screen, script may have failed. "
+                 f"Expected color {expected_color} but was {color}")
+
 # Access the coordinates from the active system
 start_drag_next_poke = config.SETTINGS['start_drag_next_poke']
 end_drag_next_poke = config.SETTINGS['end_drag_next_poke']
 modify_favorite = config.SETTINGS['modify_favorite']
+first_pokemon_health_coordinates = config.SETTINGS['first_pokemon_health_coordinates']
 
 pixel_randomness = 10
 
 # How many pixels offset could we start our drag from
-#   This is the offset in the up direction but also in the down direction, 
+#   This is the offset in the up direction but also in the down direction,
 #   effectively doubling its randomness
 drag_randomness_y = 100
 
@@ -81,7 +94,7 @@ cliclick = Cliclick()
 # Make screen mirroring the "active" window
 cliclick.click(randomize_location(start_drag_next_poke, pixel_randomness))
 
-num_modifications = 1500
+num_modifications = 400
 
 for i in range(num_modifications):
 
@@ -92,10 +105,12 @@ for i in range(num_modifications):
     initial_remaining_sleep = remaining_sleep
 
     print(f"Clicking to modify favorite")
+    ensure_pokemon_details_screen(first_pokemon_health_coordinates)
     cliclick.click(randomize_location(modify_favorite, pixel_randomness))
     remaining_sleep -= random_sleep(.5, .2)
 
     print("Clicking to start drag")
+    ensure_pokemon_details_screen(first_pokemon_health_coordinates)
     random_start_location = randomize_location(start_drag_next_poke, pixel_randomness)
     cliclick.start_drag(random_start_location)
     remaining_sleep -= random_sleep(.05, .01)
@@ -105,20 +120,20 @@ for i in range(num_modifications):
     max_slope = pow(drag_randomness_y, 1/num_drags)
     slope = random.uniform(-max_slope, max_slope)
     random_end_location = randomize_location(end_drag_next_poke, pixel_randomness)
-    
+
     total_movement_x = random_start_location[0] - random_end_location[0]
     per_movement_x = total_movement_x / num_drags + random.randint(-3, 3)
     slope_y = 1 if slope > 0 else -1
 
     sleep_per_drag = random.uniform(.05/num_drags, .02)
-    
+
     for j in range(num_drags):
         next_location_x = random_start_location[0] - (per_movement_x*(j+1))
         per_movement_y = abs(pow(slope, j))
         next_location_y =  random_start_location[1] + slope_y * per_movement_y
 
         next_location = [int(next_location_x), int(next_location_y)]
-        print(f"Dragging cursor part {j+1}/{num_drags}")
+        # print(f"Dragging cursor part {j+1}/{num_drags}")
         cliclick.continue_drag(next_location)
 
         time.sleep(sleep_per_drag)

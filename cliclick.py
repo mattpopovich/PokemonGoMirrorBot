@@ -27,17 +27,22 @@ class Cliclick:
     def start_drag(self, coordinates):
         """Start a drag at the given [x, y] coordinates."""
         x, y = coordinates
-        print(f"Starting drag at {coordinates}")
+        # print(f"Starting drag at {coordinates}")
         return self.run_command(f"dd:{x},{y}")
 
     def continue_drag(self, coordinates):
         """Continue a drag to the given [x,y] coordinates."""
         x, y = coordinates
-        print(f"Continuing drag to {coordinates}")
+        # print(f"Continuing drag to {coordinates}")
         return self.run_command(f"dm:{x},{y}")
 
     def release_drag(self, coordinates):
         """Release a drag at the given [x,y] coordinates."""
         x, y = coordinates
-        print(f"Releasing drag at {coordinates}")
+        # print(f"Releasing drag at {coordinates}")
         return self.run_command(f"du:{x},{y}")
+
+    def get_color(self, coordinates):
+        """Get the color of the pixel at the given [x,y] coordinates."""
+        x, y = coordinates
+        return self.run_command(f"cp:{x},{y}")

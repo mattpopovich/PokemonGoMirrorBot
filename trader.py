@@ -72,7 +72,9 @@ seed_value = int(now.strftime("%Y%m%d%H%M"))  # e.g., 202411081231 for Nov 8, 20
 modified_seed = seed_value + 1 if change_delay else seed_value
 random.seed(modified_seed)
 # A common PRNG between traders
-same_pseudo_rng = random.Random(int(now.strftime("%Y%m%d%H%M")))
+common_seed = int(now.strftime("%Y%m%d%H%M"))
+print(f"Using common seed: {common_seed}")
+same_pseudo_rng = random.Random(common_seed)
 
 # Execute cliclick commands with randomized locations
 cliclick = Cliclick()
@@ -80,12 +82,14 @@ cliclick = Cliclick()
 # Make screen mirroring the "active" window
 cliclick.click(randomize_location(start_trade_coordinates, pixel_randomness))
 
-for _ in range(40):
+num_trades = 7
+for i in range(num_trades):
+    print(f"Beginning trade {i}/{num_trades}")
 
     # Use if have two different seeds for the two traders
     #   (so that clicks won't be at the exact same time)
     #   but still keep them in sync
-    remaining_sleep = same_pseudo_rng.uniform(40, 50)
+    remaining_sleep = same_pseudo_rng.uniform(45, 55)
     initial_remaining_sleep = remaining_sleep
 
     print(f"Clicking on start trade")

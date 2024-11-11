@@ -16,7 +16,7 @@ systems = {
         "modify_favorite": [3401,770],
         "change_delay": False
     },
-    "iphone11ProMBAirLarger": {
+    "iPhone11ProMBAirLarger": {
         "start_trade_coordinates": [1608, 871],
         "first_pokemon_coordinates": [1366, 489],
         "next_button_coordinates": [1487, 917],

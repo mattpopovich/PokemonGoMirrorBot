@@ -81,7 +81,11 @@ cliclick = Cliclick()
 # Make screen mirroring the "active" window
 cliclick.click(randomize_location(start_drag_next_poke, pixel_randomness))
 
-for _ in range(1500):
+num_modifications = 1500
+
+for i in range(num_modifications):
+
+    print(f"Modifying favorite {i}/{num_modifications}")
 
     # How long will it take to modify favorite and move to next pokemon
     remaining_sleep = random.uniform(1, 2)

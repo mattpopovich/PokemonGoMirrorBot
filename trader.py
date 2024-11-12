@@ -11,6 +11,7 @@ import subprocess
 import config
 from cliclick import Cliclick
 import datetime
+import sys
 
 
 def randomize_location(location, pixel_randomness):
@@ -52,11 +53,48 @@ def random_sleep(base_sleep_time_s, randomness_s):
 
     return actual_sleep_time
 
+def ensure_correct_screen(expected_color: list[int], coordinates: list[int], tolerance: int = 0):
+    """
+    This function ensures that you are currently on the expected screen
+    If not, the program will exit
+
+    color = [255, 255, 255]
+
+    There are some rare cases where this does not work, Ex. large shadow pokemon
+    """
+    num_attempts = 1
+    # Sometimes we are at the right screen but the color is just a little bit off
+    for i in range(num_attempts):
+        color_str: str = cliclick.get_color(coordinates)
+        color: list[int] = list(map(int, color_str.split()))
+        if rgb_values_close(color, expected_color, tolerance):
+            print(f"Expected color {expected_color} and was {color}. Within {toler}")
+            return
+        else:
+            print(f"Expected color {expected_color} but was {color}... retrying")
+            time.sleep(1.0)
+
+    sys.exit(f"Likely not at Pokemon details screen, script may have failed. "
+                 f"Expected color {expected_color} but was {color}")
+
+def rgb_values_close(rgb1, rgb2, tolerance):
+    """
+    Checks if two RGB values are close within a given tolerance.
+
+    :param rgb1: List or tuple representing the first RGB value [R, G, B]
+    :param rgb2: List or tuple representing the second RGB value [R, G, B]
+    :param tolerance: Allowed difference for each channel
+    :return: True if all channels are within the tolerance, False otherwise
+    """
+    return all(abs(a - b) <= tolerance for a, b in zip(rgb1, rgb2))
+
 # Access the coordinates from the active system
 start_trade_coordinates = config.SETTINGS['start_trade_coordinates']
 first_pokemon_coordinates = config.SETTINGS['first_pokemon_coordinates']
+between_first_second_pokemon = config.SETTINGS['between_first_second_pokemon']
 next_button_coordinates = config.SETTINGS['next_button_coordinates']
 confirm_button_coordinates = config.SETTINGS['confirm_button_coordinates']
+pokemon_details_left_health_white = config.SETTINGS['pokemon_details_left_health_white']
 x_button_coordinates = config.SETTINGS['x_button_coordinates']
 change_delay = config.SETTINGS['change_delay']
 
@@ -93,22 +131,30 @@ for i in range(num_trades):
     initial_remaining_sleep = remaining_sleep
 
     print(f"Clicking on start trade")
+    ensure_correct_screen([255, 255, 255], next_button_coordinates, 3)
     cliclick.click(randomize_location(start_trade_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(7.0, 1.5)
 
     print("Clicking on first pokemon available to trade")
+    # Wait until between first second poke is not +-10 of 93 173 241
+    # Wait until between first second poke +-10 of 255 255 255
+    ensure_correct_screen([255, 255, 255], between_first_second_pokemon, 10)
     cliclick.click(randomize_location(first_pokemon_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(5.0, 1.5)
 
     print("Clicking on next")
+    # Wait until next button +-10 from 106 207 150
+    ensure_correct_screen([97, 177, 241], confirm_button_coordinates, 5)
     cliclick.click(randomize_location(next_button_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(5.0, 1.5)
 
     print("Clicking on confirm")
+    ensure_correct_screen([93, 173, 241], first_pokemon_coordinates, 5)
     cliclick.click(randomize_location(confirm_button_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(20.0, 1.5)
 
     print("Clicking on X")
+    ensure_correct_screen([255, 255, 255], pokemon_details_left_health_white, 0)
     cliclick.click(randomize_location(x_button_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(5.0, 1.5)
 

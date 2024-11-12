@@ -7,7 +7,6 @@ Author: Matt Popovich (mattpopovich.com)
 
 import random
 import time
-import subprocess
 import config
 from cliclick import Cliclick
 import datetime
@@ -82,9 +81,9 @@ cliclick = Cliclick()
 # Make screen mirroring the "active" window
 cliclick.click(randomize_location(start_trade_coordinates, pixel_randomness))
 
-num_trades = 7
+num_trades = 35
 for i in range(num_trades):
-    print(f"Beginning trade {i}/{num_trades}")
+    print(f"Beginning trade {i+1}/{num_trades}")
 
     # Use if have two different seeds for the two traders
     #   (so that clicks won't be at the exact same time)

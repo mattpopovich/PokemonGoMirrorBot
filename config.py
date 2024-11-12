@@ -14,7 +14,6 @@ systems = {
         "start_drag_next_poke": [3396, 1132],   # Right side of screen
         "end_drag_next_poke": [3147, 1132],     # Left side of screen
         "modify_favorite": [3401, 770],
-        "first_pokemon_health_coordinates_no_search_text": [3146,980],
         "change_delay": False
     },
     "iPhone11ProMBAirLarger": {
@@ -23,6 +22,9 @@ systems = {
         "next_button_coordinates": [1487, 917],
         "confirm_button_coordinates": [1347, 650],
         "x_button_coordinates": [1486, 995],
+        "start_drag_next_poke": [1633, 710],   # Right side of screen
+        "end_drag_next_poke": [1340, 710],     # Left side of screen
+        "modify_favorite": [1636,294],
         "change_delay": True
     },
 }

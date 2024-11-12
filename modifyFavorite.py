@@ -58,18 +58,28 @@ def ensure_pokemon_details_screen(first_pokemon_health_coordinates):
     """
     This function ensures that you are currently on the "pokemon details screen".
     If not, the program will exit
+
+    There are some rare cases where this does not work, Ex. large shadow pokemon
     """
-    color = cliclick.get_color(first_pokemon_health_coordinates)
     expected_color = "255 255 255"
-    if color != expected_color:
-        sys.exit(f"Likely not at Pokemon details screen, script may have failed. "
+    num_attempts = 4
+    # Sometimes we are at the right screen but the color is just a little bit off
+    for i in range(num_attempts):
+        color = cliclick.get_color(first_pokemon_health_coordinates)
+        if color == expected_color:
+            return
+        else:
+            print(f"Expected color {expected_color} but was {color}... retrying")
+            time.sleep(1.0)
+
+    sys.exit(f"Likely not at Pokemon details screen, script may have failed. "
                  f"Expected color {expected_color} but was {color}")
 
 # Access the coordinates from the active system
 start_drag_next_poke = config.SETTINGS['start_drag_next_poke']
 end_drag_next_poke = config.SETTINGS['end_drag_next_poke']
 modify_favorite = config.SETTINGS['modify_favorite']
-first_pokemon_health_coordinates = config.SETTINGS['first_pokemon_health_coordinates']
+first_pokemon_health_coordinates = config.SETTINGS['first_pokemon_health_coordinates_no_search_text']
 
 pixel_randomness = 10
 

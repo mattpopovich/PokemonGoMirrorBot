@@ -9,8 +9,10 @@ Edit the coordinates for your system in [`config.py`](config.py). I'd recommend 
 
 The coordinates of the current mouse position can be easily obtained via `cmd` + `shift` + `4`.
 
-Some of the scripts use `Cliclick.get_color()`, which takes a screenshot, to make sure they are on the expected page. Disable the "Catch Card" notification as this notification can cause some scripts to fail.
+Some of the scripts use `Cliclick.get_color()`, which takes a screenshot, to make sure the scripts are on the expected screen. Disable the "Catch Card" notification as this notification can cause some scripts to fail.
 * Pokeball (bottom center) --> Settings (top right) --> Notifications --> In-Game Notifications --> Catch Card --> Off
+
+The easiest way to find out the color at a certain location is by using macOS's built in "Digital Color Meter.app".
 
 ### Dependencies
 * Python

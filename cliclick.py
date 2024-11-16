@@ -22,6 +22,7 @@ class Cliclick:
     def click(self, coordinates):
         """Click at the given [x, y] coordinates."""
         x, y = coordinates
+        print(f"Clicking at {coordinates}")
         return self.run_command(f"c:{x},{y}")
 
     def start_drag(self, coordinates):

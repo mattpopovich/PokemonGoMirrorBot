@@ -22,7 +22,14 @@ class Cliclick:
     def click(self, coordinates):
         """Click at the given [x, y] coordinates."""
         x, y = coordinates
+        print(f"Clicking at {coordinates}")
         return self.run_command(f"c:{x},{y}")
+
+    def double_click(self, coordinates):
+        """Double-click at the given [x, y] coordinates."""
+        x, y = coordinates
+        print(f"Double-clicking at {coordinates}")
+        return self.run_command(f"dc:{x},{y}")
 
     def start_drag(self, coordinates):
         """Start a drag at the given [x, y] coordinates."""
@@ -42,7 +49,8 @@ class Cliclick:
         # print(f"Releasing drag at {coordinates}")
         return self.run_command(f"du:{x},{y}")
 
-    def get_color(self, coordinates):
-        """Get the color of the pixel at the given [x,y] coordinates."""
-        x, y = coordinates
-        return self.run_command(f"cp:{x},{y}")
+    # This sends a screenshot notification to pokemon go
+    # def get_color(self, coordinates):
+    #     """Get the color of the pixel at the given [x,y] coordinates."""
+    #     x, y = coordinates
+    #     return self.run_command(f"cp:{x},{y}")

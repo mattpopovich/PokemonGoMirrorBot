@@ -9,7 +9,7 @@ SCREEN_CAPTURE = True
 #   Depending on which script you are running,
 #   not all of these need to be defined
 systems = {
-    "iPhone15ProMaxWidescreen": {
+    "iPhone15ProMaxWidescreen": {               # Widescreen monitor
         "start_trade_coordinates": [3377, 1285],
         "first_pokemon_coordinates": [3161, 953],
         "between_first_second_pokemon": [3213, 947],
@@ -20,15 +20,17 @@ systems = {
         "start_drag_next_poke": [3396, 1132],   # Right side of screen
         "end_drag_next_poke": [3147, 1132],     # Left side of screen
         "modify_favorite": [3401, 770],
-        "first_pokemon_health_coordinates_no_search_text": [3146,980],
         "change_delay": False
     },
-    "iPhone11ProMBAirLarger": {
+    "iPhone11ProMBAirLarger": {                 # iPhone Mirroring -> View -> Larger
         "start_trade_coordinates": [1608, 871],
         "first_pokemon_coordinates": [1366, 489],
         "next_button_coordinates": [1487, 917],
         "confirm_button_coordinates": [1347, 650],
         "x_button_coordinates": [1486, 995],
+        "start_drag_next_poke": [1633, 710],    # Right side of screen
+        "end_drag_next_poke": [1340, 710],      # Left side of screen
+        "modify_favorite": [1636,294],
         "change_delay": True
     },
 }

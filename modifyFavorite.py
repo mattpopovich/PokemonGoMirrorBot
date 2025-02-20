@@ -12,7 +12,6 @@ import subprocess
 import config
 from cliclick import Cliclick
 import datetime
-import sys
 
 
 def randomize_location(location, pixel_randomness):
@@ -54,32 +53,10 @@ def random_sleep(base_sleep_time_s, randomness_s):
 
     return actual_sleep_time
 
-def ensure_pokemon_details_screen(first_pokemon_health_coordinates):
-    """
-    This function ensures that you are currently on the "pokemon details screen".
-    If not, the program will exit
-
-    There are some rare cases where this does not work, Ex. large shadow pokemon
-    """
-    expected_color = "255 255 255"
-    num_attempts = 4
-    # Sometimes we are at the right screen but the color is just a little bit off
-    for i in range(num_attempts):
-        color = cliclick.get_color(first_pokemon_health_coordinates)
-        if color == expected_color:
-            return
-        else:
-            print(f"Expected color {expected_color} but was {color}... retrying")
-            time.sleep(1.0)
-
-    sys.exit(f"Likely not at Pokemon details screen, script may have failed. "
-                 f"Expected color {expected_color} but was {color}")
-
 # Access the coordinates from the active system
 start_drag_next_poke = config.SETTINGS['start_drag_next_poke']
 end_drag_next_poke = config.SETTINGS['end_drag_next_poke']
 modify_favorite = config.SETTINGS['modify_favorite']
-first_pokemon_health_coordinates = config.SETTINGS['first_pokemon_health_coordinates_no_search_text']
 
 pixel_randomness = 10
 
@@ -108,19 +85,17 @@ num_modifications = 400
 
 for i in range(num_modifications):
 
-    print(f"Modifying favorite {i}/{num_modifications}")
+    print(f"Modifying favorite {i+1}/{num_modifications}")
 
     # How long will it take to modify favorite and move to next pokemon
     remaining_sleep = random.uniform(1, 2)
     initial_remaining_sleep = remaining_sleep
 
     print(f"Clicking to modify favorite")
-    ensure_pokemon_details_screen(first_pokemon_health_coordinates)
     cliclick.click(randomize_location(modify_favorite, pixel_randomness))
     remaining_sleep -= random_sleep(.5, .2)
 
     print("Clicking to start drag")
-    ensure_pokemon_details_screen(first_pokemon_health_coordinates)
     random_start_location = randomize_location(start_drag_next_poke, pixel_randomness)
     cliclick.start_drag(random_start_location)
     remaining_sleep -= random_sleep(.05, .01)

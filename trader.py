@@ -64,6 +64,7 @@ def ensure_correct_screen(expected_color: list[int], coordinates: list[int], tol
     num_attempts = 1
     # Sometimes we are at the right screen but the color is just a little bit off
     for i in range(num_attempts):
+        print("Taking screenshot...")
         color_str: str = cliclick.get_color(coordinates)
         color: list[int] = list(map(int, color_str.split()))
         if rgb_values_close(color, expected_color, tolerance):
@@ -88,6 +89,9 @@ def rgb_values_close(rgb1, rgb2, tolerance):
     return all(abs(a - b) <= tolerance for a, b in zip(rgb1, rgb2))
 
 # Access the coordinates from the active system
+SCREEN_CAPTURE_ALWAYS = config.SCREEN_CAPTURE_ALWAYS
+SCREEN_CAPTURE_MINIMAL = config.SCREEN_CAPTURE_MINIMAL
+
 start_trade_coordinates = config.SETTINGS['start_trade_coordinates']
 first_pokemon_coordinates = config.SETTINGS['first_pokemon_coordinates']
 between_first_second_pokemon = config.SETTINGS['between_first_second_pokemon']
@@ -130,30 +134,35 @@ for i in range(num_trades):
     initial_remaining_sleep = remaining_sleep
 
     print(f"Clicking on start trade")
-    ensure_correct_screen([255, 255, 255], next_button_coordinates, 3)
+    if SCREEN_CAPTURE_ALWAYS:
+        ensure_correct_screen([255, 255, 255], next_button_coordinates, 3)
     cliclick.click(randomize_location(start_trade_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(7.0, 1.5)
 
     print("Clicking on first pokemon available to trade")
-    # Wait until between first second poke is not +-10 of 93 173 241
-    # Wait until between first second poke +-10 of 255 255 255
-    ensure_correct_screen([255, 255, 255], between_first_second_pokemon, 10)
+    if SCREEN_CAPTURE_ALWAYS:
+        # Wait until between first second poke is not +-10 of 93 173 241
+        # Wait until between first second poke +-10 of 255 255 255
+        ensure_correct_screen([253, 255, 251], between_first_second_pokemon, 10)
     cliclick.click(randomize_location(first_pokemon_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(5.0, 1.5)
 
     print("Clicking on next")
-    # Wait until next button +-10 from 106 207 150
-    ensure_correct_screen([97, 177, 241], confirm_button_coordinates, 5)
+    if SCREEN_CAPTURE_ALWAYS:
+        # Wait until next button +-10 from 106 207 150
+        ensure_correct_screen([97, 177, 241], confirm_button_coordinates, 5)
     cliclick.click(randomize_location(next_button_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(5.0, 1.5)
 
     print("Clicking on confirm")
-    ensure_correct_screen([93, 173, 241], first_pokemon_coordinates, 5)
+    if SCREEN_CAPTURE_ALWAYS or SCREEN_CAPTURE_MINIMAL:
+        ensure_correct_screen([126, 184, 241], first_pokemon_coordinates, 5)
     cliclick.click(randomize_location(confirm_button_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(20.0, 1.5)
 
     print("Clicking on X")
-    ensure_correct_screen([255, 255, 255], pokemon_details_left_health_white, 0)
+    if SCREEN_CAPTURE_ALWAYS:
+        ensure_correct_screen([255, 255, 255], pokemon_details_left_health_white, 0)
     cliclick.click(randomize_location(x_button_coordinates, pixel_randomness))
     remaining_sleep -= random_sleep(5.0, 1.5)
 

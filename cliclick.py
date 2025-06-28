@@ -50,7 +50,7 @@ class Cliclick:
         return self.run_command(f"du:{x},{y}")
 
     # This sends a screenshot notification to pokemon go
-    # def get_color(self, coordinates):
-    #     """Get the color of the pixel at the given [x,y] coordinates."""
-    #     x, y = coordinates
-    #     return self.run_command(f"cp:{x},{y}")
+    def get_color(self, coordinates):
+        """Get the color of the pixel at the given [x,y] coordinates."""
+        x, y = coordinates
+        return self.run_command(f"cp:{x},{y}")

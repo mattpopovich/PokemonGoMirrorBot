@@ -2,15 +2,18 @@
 ACTIVE_SYSTEM = "iPhone15ProMaxWidescreen"
 
 # Take a screenshot to give confidence that we are on the right screen
+# Likely increases chance of PokemonGo banning your account for botting
 #   Dependency: PIL (pillow)
-SCREEN_CAPTURE = True
+SCREEN_CAPTURE_ALWAYS = False
+SCREEN_CAPTURE_MINIMAL = False
 
 # Define system-specific coordinates
 #   Depending on which script you are running,
 #   not all of these need to be defined
 systems = {
     "iPhone15ProMaxWidescreen": {               # Widescreen monitor
-        "start_trade_coordinates": [3377, 1285],
+        "start_battle_coordinates": [3377, 1285],
+        "start_trade_coordinates": [3283, 1285],
         "first_pokemon_coordinates": [3161, 953],
         "between_first_second_pokemon": [3213, 947],    # Whitespace
         "next_button_coordinates": [3268, 1321],
@@ -23,7 +26,8 @@ systems = {
         "change_delay": False
     },
     "iPhone11ProMBAirLarger": {                 # iPhone Mirroring -> View -> Larger
-        "start_trade_coordinates": [1608, 871],
+        "start_battle_coordinates": [1608, 871],
+        "start_trade_coordinates": [1493, 871],
         "first_pokemon_coordinates": [1366, 489],
         "between_first_second_pokemon": [1420, 488],
         "next_button_coordinates": [1487, 917],

@@ -8,50 +8,11 @@ Author: Matt Popovich (mattpopovich.com)
 
 import random
 import time
-import subprocess
 import config
 from cliclick import Cliclick
 import datetime
 
-
-def randomize_location(location, pixel_randomness):
-    """
-    Randomizes the location coordinates within a specified pixel_randomness range.
-
-    Args:
-    - location (list): A list in the form [x, y].
-    - pixel_randomness (int): Maximum random offset for both x and y.
-
-    Returns:
-    - list: New randomized location as [new_x, new_y].
-    """
-    location_x, location_y = location
-    random_offset_x = random.randint(-pixel_randomness, pixel_randomness)
-    random_offset_y = random.randint(-pixel_randomness, pixel_randomness)
-
-    new_x = location_x + random_offset_x
-    new_y = location_y + random_offset_y
-
-    return [new_x, new_y]
-
-def random_sleep(base_sleep_time_s, randomness_s):
-    """
-    Sleeps for a random duration based on base sleep time and randomness_s range.
-
-    Args:
-    - base_sleep_time_s (float): Base sleep time in seconds.
-    - randomness_s (float): Maximum random offset in seconds.
-
-    Returns:
-    - float: The actual sleep time.
-    """
-    offset = random.uniform(-randomness_s, randomness_s)
-    actual_sleep_time = max(0, base_sleep_time_s + offset)
-
-    print(f"  Sleeping for {actual_sleep_time:.2f}s")
-    time.sleep(actual_sleep_time)
-
-    return actual_sleep_time
+import functions.utils as utils
 
 # Access the coordinates from the active system
 start_drag_next_poke = config.SETTINGS['start_drag_next_poke']
@@ -79,7 +40,7 @@ random.seed(seed_value)
 cliclick = Cliclick()
 
 # Make screen mirroring the "active" window
-cliclick.click(randomize_location(start_drag_next_poke, pixel_randomness))
+cliclick.click(utils.randomize_location(start_drag_next_poke, pixel_randomness))
 
 num_modifications = 400
 
@@ -92,19 +53,19 @@ for i in range(num_modifications):
     initial_remaining_sleep = remaining_sleep
 
     print(f"Clicking to modify favorite")
-    cliclick.click(randomize_location(modify_favorite, pixel_randomness))
-    remaining_sleep -= random_sleep(.5, .2)
+    cliclick.click(utils.randomize_location(modify_favorite, pixel_randomness))
+    remaining_sleep -= utils.random_sleep(.5, .2)
 
     print("Clicking to start drag")
-    random_start_location = randomize_location(start_drag_next_poke, pixel_randomness)
+    random_start_location = utils.randomize_location(start_drag_next_poke, pixel_randomness)
     cliclick.start_drag(random_start_location)
-    remaining_sleep -= random_sleep(.05, .01)
+    remaining_sleep -= utils.random_sleep(.05, .01)
 
     # Drag cursor
     num_drags = 15
     max_slope = pow(drag_randomness_y, 1/num_drags)
     slope = random.uniform(-max_slope, max_slope)
-    random_end_location = randomize_location(end_drag_next_poke, pixel_randomness)
+    random_end_location = utils.randomize_location(end_drag_next_poke, pixel_randomness)
 
     total_movement_x = random_start_location[0] - random_end_location[0]
     per_movement_x = total_movement_x / num_drags + random.randint(-3, 3)
@@ -126,7 +87,7 @@ for i in range(num_modifications):
 
     print("Finishing drag")
     cliclick.release_drag(next_location)
-    remaining_sleep -= random_sleep(.2, .1)
+    remaining_sleep -= utils.random_sleep(.2, .1)
 
     print(f"Modifying that favorite took {(initial_remaining_sleep - remaining_sleep):.2f}s")
     print(f"Sleeping for {remaining_sleep:.2f}s to cool down\n")

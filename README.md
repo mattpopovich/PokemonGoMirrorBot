@@ -34,7 +34,8 @@ The easiest way to find out the color at a certain location is by using macOS's 
   * `distance101-`
 
 ### My routine
-* First, I search to see which pokemon I can evolve with 0 candy and I will either evolve them or save them for evolution later (just make sure that I evolve them before transferring)
+* First, I check for nundos with the search string `0attack&0defense&0hp` and favorite them
+* Second, I search to see which pokemon I can evolve with 0 candy and I will either evolve them or save them for evolution later (just make sure that I evolve them before transferring)
 * Then, I will go through recently acquired pokemon and "favorite" any that are strong
 * Next, I apply a tag named "transfer" to all the pokemon that I am okay with transferring away
   * `!@special&!lucky&!legendary&!mythical&!costume&!ultra beasts&!shiny&!xxl&!xxs&!candyxl&!locationbackground&!specialbackground&!favorite&!shadow&!purified&!dynamax&!4*&!3*&!futureTransfer`

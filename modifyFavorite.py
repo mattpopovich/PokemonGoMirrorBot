@@ -1,6 +1,6 @@
 """
 This script will scroll through pokemon and modify their favorite status
-Ex. Given a list of tags, open the first pokemon, and run this script
+Ex. Given a search for pokemon, open the first pokemon, then run this script
 
 Author: Matt Popovich (mattpopovich.com)
 """

@@ -1,5 +1,7 @@
 """
 Functions used throughout PokemonGoMirrorBot
+
+Author: Matt Popovich (mattpopovich.com)
 """
 
 import random

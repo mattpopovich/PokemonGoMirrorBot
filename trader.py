@@ -1,16 +1,20 @@
 """
+This script will trade pokemon between two accounts
+
 Get two accounts, go to their friends lists, click on each other,
     then run this script
+
 Author: Matt Popovich (mattpopovich.com)
 """
 
-
+# System imports
 import random
 import time
-import config
-from cliclick import Cliclick
 import datetime
 
+# Custom imports
+import config
+from cliclick import Cliclick
 import functions.utils as utils
 
 # Access the coordinates from the active system
@@ -50,29 +54,29 @@ for i in range(num_trades):
     # Use if have two different seeds for the two traders
     #   (so that clicks won't be at the exact same time)
     #   but still keep them in sync
-    remaining_sleep = same_pseudo_rng.uniform(45, 55)
-    initial_remaining_sleep = remaining_sleep
+    remaining_sleep_s = same_pseudo_rng.uniform(45, 55)
+    initial_remaining_sleep_s = remaining_sleep_s
 
     print(f"Clicking on start trade")
     cliclick.click(utils.randomize_location(start_trade_coordinates, pixel_randomness))
-    remaining_sleep -= utils.random_sleep(7.0, 1.5)
+    remaining_sleep_s -= utils.random_sleep(7.0, 1.5)
 
     print("Clicking on first pokemon available to trade")
     cliclick.click(utils.randomize_location(first_pokemon_coordinates, pixel_randomness))
-    remaining_sleep -= utils.random_sleep(5.0, 1.5)
+    remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
     print("Clicking on next")
     cliclick.click(utils.randomize_location(next_button_coordinates, pixel_randomness))
-    remaining_sleep -= utils.random_sleep(5.0, 1.5)
+    remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
     print("Clicking on confirm")
     cliclick.click(utils.randomize_location(confirm_button_coordinates, pixel_randomness))
-    remaining_sleep -= utils.random_sleep(20.0, 1.5)
+    remaining_sleep_s -= utils.random_sleep(20.0, 1.5)
 
     print("Clicking on X")
     cliclick.click(utils.randomize_location(x_button_coordinates, pixel_randomness))
-    remaining_sleep -= utils.random_sleep(5.0, 1.5)
+    remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
-    print(f"That trade took {(initial_remaining_sleep - remaining_sleep):.2f}s")
-    print(f"Sleeping for {remaining_sleep:.2f}s to keep traders in sync\n")
-    time.sleep(max(0, remaining_sleep))
+    print(f"That trade took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
+    print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
+    time.sleep(max(0, remaining_sleep_s))

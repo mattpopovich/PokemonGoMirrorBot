@@ -1,5 +1,7 @@
 import subprocess
 
+from functions.utils import randomize_location
+
 class Cliclick:
     def __init__(self, executable="cliclick"):
         self.executable = executable
@@ -14,36 +16,40 @@ class Cliclick:
             print(f"Error: {e.stderr.strip()}")
             raise
 
-    def move(self, coordinates):
+    def move(self, coordinates: list[int]):
         """Move the mouse to the given [x, y] coordinates."""
         x, y = coordinates
         return self.run_command(f"m:{x},{y}")
 
-    def click(self, coordinates):
+    def click(self, coordinates: list[int]):
         """Click at the given [x, y] coordinates."""
         x, y = coordinates
         # print(f"Clicking at {coordinates}")
         return self.run_command(f"c:{x},{y}")
 
-    def double_click(self, coordinates):
+    def random_click(self, coordinates: list[int], pixel_randomness: int):
+        """Click at the given [x,y] coordiantes within a specified pixel_randomness range"""
+        return self.click(randomize_location(coordinates, pixel_randomness))
+
+    def double_click(self, coordinates: list[int]):
         """Double-click at the given [x, y] coordinates."""
         x, y = coordinates
         # print(f"Double-clicking at {coordinates}")
         return self.run_command(f"dc:{x},{y}")
 
-    def start_drag(self, coordinates):
+    def start_drag(self, coordinates: list[int]):
         """Start a drag at the given [x, y] coordinates."""
         x, y = coordinates
         # print(f"Starting drag at {coordinates}")
         return self.run_command(f"dd:{x},{y}")
 
-    def continue_drag(self, coordinates):
+    def continue_drag(self, coordinates: list[int]):
         """Continue a drag to the given [x,y] coordinates."""
         x, y = coordinates
         # print(f"Continuing drag to {coordinates}")
         return self.run_command(f"dm:{x},{y}")
 
-    def release_drag(self, coordinates):
+    def release_drag(self, coordinates: list[int]):
         """Release a drag at the given [x,y] coordinates."""
         x, y = coordinates
         # print(f"Releasing drag at {coordinates}")

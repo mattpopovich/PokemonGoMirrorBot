@@ -7,7 +7,7 @@ Author: Matt Popovich (mattpopovich.com)
 import random
 import time
 
-def randomize_location(location, pixel_randomness):
+def randomize_location(location: list[int], pixel_randomness: int):
     """
     Randomizes the location coordinates within a specified pixel_randomness range.
 
@@ -27,7 +27,7 @@ def randomize_location(location, pixel_randomness):
 
     return [new_x, new_y]
 
-def random_sleep(base_sleep_time_s, randomness_s):
+def random_sleep(base_sleep_time_s: float, randomness_s: float):
     """
     Sleeps for a random duration based on base sleep time and randomness_s range.
 

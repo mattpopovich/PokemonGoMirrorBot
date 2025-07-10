@@ -47,7 +47,7 @@ same_pseudo_rng = random.Random(common_seed)
 cliclick = Cliclick()
 
 # Make screen mirroring the "active" window
-cliclick.click(utils.randomize_location(start_battle_coordinates, pixel_randomness))
+cliclick.random_click(start_battle_coordinates, pixel_randomness)
 
 # Use if have two different seeds for the two traders
 #   (so that clicks won't be at the exact same time)
@@ -60,11 +60,11 @@ print(f"Wait for other account create the battle")
 utils.random_sleep(11.0, 2.0)
 
 print(f"Clicking on 'Let's do it!'")
-cliclick.click(utils.randomize_location(lets_do_it_coordinates, pixel_randomness))
+cliclick.random_click(lets_do_it_coordinates, pixel_randomness)
 utils.random_sleep(3.0, 1.0)
 
 print(f"Clicking on 'Use this party'")
-cliclick.click(utils.randomize_location(use_party_coordinates, pixel_randomness))
+cliclick.random_click(use_party_coordinates, pixel_randomness)
 utils.random_sleep(3.0, 1.0)
 
 
@@ -83,15 +83,15 @@ for i in range(num_battles):
     print(f"Planned battle time: {battle_length_s:.2f}")
 
     print(f"Tapping to attack with first pokemon")
-    cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
+    cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
     utils.random_sleep(15.0, 1.0)
 
     print(f"Tapping to attack with second pokemon")
-    cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
+    cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
     utils.random_sleep(9.0, 2.0)
 
     print(f"Tapping to attack with third pokemon")
-    cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
+    cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
     utils.random_sleep(11.0, 2.0)
 
     finish_battle_time_dt = datetime.datetime.now()
@@ -107,9 +107,9 @@ for i in range(num_battles):
     print(f"Planned setup time: {setup_time_s:.2f}s")
 
     print(f"Tapping on rematch")
-    cliclick.click(utils.randomize_location(rematch_coordinates, pixel_randomness))
+    cliclick.random_click(rematch_coordinates, pixel_randomness)
     utils.random_sleep(2.0, 0.75)
 
     print(f"Clicking on 'Use this party'")
-    cliclick.click(utils.randomize_location(use_party_coordinates, pixel_randomness))
+    cliclick.random_click(use_party_coordinates, pixel_randomness)
 

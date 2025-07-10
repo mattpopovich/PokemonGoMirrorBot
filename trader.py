@@ -45,7 +45,7 @@ same_pseudo_rng = random.Random(common_seed)
 cliclick = Cliclick()
 
 # Make screen mirroring the "active" window
-cliclick.click(utils.randomize_location(start_trade_coordinates, pixel_randomness))
+cliclick.random_click(start_trade_coordinates, pixel_randomness)
 
 num_trades = 35
 for i in range(num_trades):
@@ -58,23 +58,23 @@ for i in range(num_trades):
     initial_remaining_sleep_s = remaining_sleep_s
 
     print(f"Clicking on start trade")
-    cliclick.click(utils.randomize_location(start_trade_coordinates, pixel_randomness))
+    cliclick.random_click(start_trade_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(7.0, 1.5)
 
     print("Clicking on first pokemon available to trade")
-    cliclick.click(utils.randomize_location(first_trade_pokemon_coordinates, pixel_randomness))
+    cliclick.random_click(first_trade_pokemon_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
     print("Clicking on next")
-    cliclick.click(utils.randomize_location(next_button_coordinates, pixel_randomness))
+    cliclick.random_click(next_button_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
     print("Clicking on confirm")
-    cliclick.click(utils.randomize_location(confirm_button_coordinates, pixel_randomness))
+    cliclick.random_click(confirm_button_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(20.0, 1.5)
 
     print("Clicking on X")
-    cliclick.click(utils.randomize_location(x_button_coordinates, pixel_randomness))
+    cliclick.random_click(x_button_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
     print(f"That trade took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")

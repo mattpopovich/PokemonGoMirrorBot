@@ -61,7 +61,7 @@ utils.random_sleep(11.0, 2.0)
 
 print(f"Clicking on 'Let's do it!'")
 cliclick.random_click(lets_do_it_coordinates, pixel_randomness)
-utils.random_sleep(3.0, 1.0)
+utils.random_sleep(4.5, 1.0)
 
 print(f"Clicking on 'Use this party'")
 cliclick.random_click(use_party_coordinates, pixel_randomness)

@@ -2,6 +2,9 @@
 This script will perform battles between two accounts.
 Run this script for the account that you want to lose with.
 
+First, go to the map, then pokeball (middle bottom), then pokemon. Have this
+    screen show the top 3 pokemon you want to use in the battle. These should be
+    very low CP pokemon, so I sort by CP (low at the top).
 Click on your avatar (bottom left), click on the desired friend that will win
     battles, then run this script.
 
@@ -60,8 +63,9 @@ cliclick.click(utils.randomize_location(start_battle_coordinates, pixel_randomne
 # Use if have two different seeds for the two traders
 #   (so that clicks won't be at the exact same time)
 #   but still keep them in sync
-remaining_sleep_s = same_pseudo_rng.uniform(22, 30)
+remaining_sleep_s = same_pseudo_rng.uniform(33, 38)
 initial_remaining_sleep_s = remaining_sleep_s
+print(f"Setup time: {initial_remaining_sleep_s:.2f}s")
 
 
 print(f"Clicking on start battle")
@@ -82,13 +86,13 @@ for i in range(num_battles):
     cliclick.click(utils.randomize_location(first_pokemon_in_party_coordinates, pixel_randomness))
     remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
 
-    print(f"Clicking on sort button")
-    cliclick.click(utils.randomize_location(sort_button_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
+    # print(f"Clicking on sort button")
+    # cliclick.click(utils.randomize_location(sort_button_coordinates, pixel_randomness))
+    # remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
 
-    print(f"Selecting CP to sort low at the top")
-    cliclick.click(utils.randomize_location(sort_button_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
+    # print(f"Selecting CP to sort low at the top")
+    # cliclick.click(utils.randomize_location(sort_button_coordinates, pixel_randomness))
+    # remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
 
     print(f"Clicking on first pokemon")
     cliclick.click(utils.randomize_location(first_pokemon_coordinates, pixel_randomness))
@@ -108,31 +112,37 @@ for i in range(num_battles):
 
     print(f"Clicking on 'Use this party'")
     cliclick.click(utils.randomize_location(use_party_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(16.0, 1.0)
 
     print(f"Setup took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
     print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
     time.sleep(max(0, remaining_sleep_s))
 
-
-    remaining_sleep_s = same_pseudo_rng.uniform(65, 70)
+    print(f"Beginning battle {i+1}/{num_battles}")
+    remaining_sleep_s = same_pseudo_rng.uniform(44, 50)
     initial_remaining_sleep_s = remaining_sleep_s
 
     print(f"Clicking to get status of first loss")
-    remaining_sleep_s -= utils.random_sleep(1.0, 1.0)
+    remaining_sleep_s -= utils.random_sleep(1.5, 0.5)
     cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
-    remaining_sleep_s -= utils.random_sleep(15.8, 1.0)
+    remaining_sleep_s -= utils.random_sleep(15.0, 1.0)
 
     print(f"Clicking to get status of second loss")
     cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
     remaining_sleep_s -= utils.random_sleep(9.0, 2.0)
 
     print(f"Clicking to get status of third loss")
+    cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
+    remaining_sleep_s -= utils.random_sleep(11.0, 2.0)
+
+    print(f"Battle took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
+    print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
+    time.sleep(max(0, remaining_sleep_s))
+
+    remaining_sleep_s = same_pseudo_rng.uniform(33, 38)
+    initial_remaining_sleep_s = remaining_sleep_s
+    print(f"Setup time: {initial_remaining_sleep_s:.2f}s")
 
     print(f"Tapping on rematch")
     cliclick.click(utils.randomize_location(rematch_coordinates, pixel_randomness))
     remaining_sleep_s -= utils.random_sleep(2.0, 0.75)
 
-    print(f"Battle took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
-    print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
-    time.sleep(max(0, remaining_sleep_s))

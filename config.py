@@ -31,7 +31,7 @@ systems = {
         "first_pokemon_coordinates": [3160, 1026],
         "second_pokemon_coordinates": [3267, 1026],
         "third_pokemon_coordinates": [3373, 1026],
-        "done_button_coordinates": [3343, 1043],
+        "done_button_coordinates": [3343, 1402],
         "change_delay": False
     },
     "iPhone11ProMBAirLarger": {                 # iPhone Mirroring -> View -> Larger

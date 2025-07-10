@@ -116,7 +116,7 @@ for i in range(num_battles):
     print(f"Planned battle time: {battle_length_s:.2f}")
 
     print(f"Clicking to get status of first loss")
-    utils.random_sleep(1.5, 0.5)
+    utils.random_sleep(2.0, 0.5)
     cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
     utils.random_sleep(15.0, 1.0)
 

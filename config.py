@@ -1,5 +1,5 @@
 # Define the active system
-ACTIVE_SYSTEM = "iPhone15ProMaxWidescreen"
+ACTIVE_SYSTEM = "iPhone11ProMBAirLarger"
 
 # TODO: Scale these based on Ex. top left and bottom right corners or something
 #       Scale would be dependent on screen aspect ratio
@@ -10,7 +10,7 @@ systems = {
     "iPhone15ProMaxWidescreen": {               # Widescreen monitor
         "start_battle_coordinates": [3377, 1285],
         "start_trade_coordinates": [3283, 1285],
-        "first_pokemon_coordinates": [3161, 953],
+        "first_trade_pokemon_coordinates": [3161, 953],
         "between_first_second_pokemon": [3213, 947],    # Whitespace
         "next_button_coordinates": [3268, 1321],
         "confirm_button_coordinates": [3141, 1086],
@@ -37,7 +37,7 @@ systems = {
     "iPhone11ProMBAirLarger": {                 # iPhone Mirroring -> View -> Larger
         "start_battle_coordinates": [1608, 871],
         "start_trade_coordinates": [1493, 871],
-        "first_pokemon_coordinates": [1366, 489],
+        "first_trade_pokemon_coordinates": [1366, 489],
         "between_first_second_pokemon": [1420, 488],
         "next_button_coordinates": [1487, 917],
         "confirm_button_coordinates": [1347, 650],
@@ -46,6 +46,19 @@ systems = {
         "start_drag_next_poke": [1633, 710],
         "end_drag_next_poke": [1340, 710],
         "modify_favorite": [1636,294],
+        "lets_do_it_coordinates": [1483, 728],
+        "great_league_coordinates": [1485, 604],
+        "ultra_league_coordinates": [1486, 720],
+        "master_league_coordinates": [1487, 841],
+        "lets_battle_coordinates": [1482, 719],
+        "first_pokemon_in_party_coordinates": [1384, 828],
+        "use_party_coordinates": [1499, 959],
+        "rematch_coordinates": [1482, 750],
+        "sort_button_coordinates": [1621, 915],
+        "first_pokemon_coordinates": [1367, 566],
+        "second_pokemon_coordinates": [1485, 566],
+        "third_pokemon_coordinates": [1602, 566],
+        "done_button_coordinates": [1571, 1009],
         "change_delay": True
     },
 }

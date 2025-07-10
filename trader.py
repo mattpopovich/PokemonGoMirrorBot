@@ -19,7 +19,7 @@ import functions.utils as utils
 
 # Access the coordinates from the active system
 start_trade_coordinates = config.SETTINGS['start_trade_coordinates']
-first_pokemon_coordinates = config.SETTINGS['first_pokemon_coordinates']
+first_trade_pokemon_coordinates = config.SETTINGS['first_trade_pokemon_coordinates']
 next_button_coordinates = config.SETTINGS['next_button_coordinates']
 confirm_button_coordinates = config.SETTINGS['confirm_button_coordinates']
 x_button_coordinates = config.SETTINGS['x_button_coordinates']
@@ -62,7 +62,7 @@ for i in range(num_trades):
     remaining_sleep_s -= utils.random_sleep(7.0, 1.5)
 
     print("Clicking on first pokemon available to trade")
-    cliclick.click(utils.randomize_location(first_pokemon_coordinates, pixel_randomness))
+    cliclick.click(utils.randomize_location(first_trade_pokemon_coordinates, pixel_randomness))
     remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
     print("Clicking on next")

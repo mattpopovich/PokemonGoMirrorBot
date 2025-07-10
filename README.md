@@ -22,6 +22,7 @@ The easiest way to find out the color at a certain location is by using macOS's 
 ### Supported bot actions
 * Trading
 * Modifying the favorite status of Pokemon
+* Battling against another account
 
 ### Helpful search strings
 * See all pokemon that can evolve with 0 candy

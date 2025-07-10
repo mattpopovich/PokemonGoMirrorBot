@@ -62,78 +62,84 @@ cliclick.click(utils.randomize_location(start_battle_coordinates, pixel_randomne
 # Use if have two different seeds for the two traders
 #   (so that clicks won't be at the exact same time)
 #   but still keep them in sync
-remaining_sleep_s = same_pseudo_rng.uniform(33, 38)
-initial_remaining_sleep_s = remaining_sleep_s
-print(f"Setup time: {initial_remaining_sleep_s:.2f}s")
-
+setup_time_s = same_pseudo_rng.uniform(33, 38)
+initial_setup_time_dt = datetime.datetime.now()
+print(f"Planned setup time: {setup_time_s:.2f}s")
 
 print(f"Clicking on start battle")
 cliclick.click(utils.randomize_location(start_battle_coordinates, pixel_randomness))
-remaining_sleep_s -= utils.random_sleep(3.0, 1.0)
+utils.random_sleep(3.0, 1.0)
 
 print(f"Clicking on desired league to battle in")
 cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness))
-remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
+utils.random_sleep(1.5, 0.75)
 
 print(f"Clicking on 'Let's Battle'")
 cliclick.click(utils.randomize_location(lets_battle_coordinates, pixel_randomness))
-remaining_sleep_s -= utils.random_sleep(2.0, 0.75)
+utils.random_sleep(2.0, 0.75)
 
-num_battles = 5
+num_battles = 12
 for i in range(num_battles):
     print(f"Clicking on first pokemon in party")
     cliclick.click(utils.randomize_location(first_pokemon_in_party_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
+    utils.random_sleep(1.5, 0.75)
 
     print(f"Clicking on first pokemon")
     cliclick.click(utils.randomize_location(first_pokemon_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.25, 0.5)
+    utils.random_sleep(1.25, 0.5)
 
     print(f"Clicking on second pokemon")
     cliclick.click(utils.randomize_location(second_pokemon_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.25, 0.5)
+    utils.random_sleep(1.25, 0.5)
 
     print(f"Clicking on third pokemon")
     cliclick.click(utils.randomize_location(third_pokemon_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.25, 0.5)
+    utils.random_sleep(1.25, 0.5)
 
     print(f"Clicking on done button")
     cliclick.click(utils.randomize_location(done_button_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
+    utils.random_sleep(1.5, 0.75)
 
     print(f"Clicking on 'Use this party'")
     cliclick.click(utils.randomize_location(use_party_coordinates, pixel_randomness))
 
-    print(f"Setup took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
-    print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
-    time.sleep(max(0, remaining_sleep_s))
+    finish_setup_time_dt = datetime.datetime.now()
+    actual_setup_s = (finish_setup_time_dt - initial_setup_time_dt).total_seconds()
+    post_setup_sleep_time_s = setup_time_s - actual_setup_s
+    print(f"Setup took {(actual_setup_s):.2f}s")
+    print(f"Sleeping for {post_setup_sleep_time_s:.2f}s to keep traders in sync\n")
+    time.sleep(max(0, post_setup_sleep_time_s))
 
     print(f"Beginning battle {i+1}/{num_battles}")
-    remaining_sleep_s = same_pseudo_rng.uniform(42, 45)
-    initial_remaining_sleep_s = remaining_sleep_s
+    battle_length_s = same_pseudo_rng.uniform(42, 45)
+    initial_battle_time_dt = datetime.datetime.now()
+    print(f"Planned battle time: {battle_length_s:.2f}")
 
     print(f"Clicking to get status of first loss")
-    remaining_sleep_s -= utils.random_sleep(1.5, 0.5)
+    utils.random_sleep(1.5, 0.5)
     cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
-    remaining_sleep_s -= utils.random_sleep(15.0, 1.0)
+    utils.random_sleep(15.0, 1.0)
 
     print(f"Clicking to get status of second loss")
     cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
-    remaining_sleep_s -= utils.random_sleep(9.0, 2.0)
+    utils.random_sleep(9.0, 2.0)
 
     print(f"Clicking to get status of third loss")
     cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness*4))
-    remaining_sleep_s -= utils.random_sleep(11.0, 2.0)
+    utils.random_sleep(11.0, 2.0)
 
-    print(f"Battle took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
-    print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
-    time.sleep(max(0, remaining_sleep_s))
+    finish_battle_time_dt = datetime.datetime.now()
+    actual_battle_s = (finish_battle_time_dt - initial_battle_time_dt).total_seconds()
+    post_battle_sleep_time_s = battle_length_s - actual_battle_s
+    print(f"Battle took {actual_battle_s:.2f}s")
+    print(f"Sleeping for {post_battle_sleep_time_s:.2f}s to keep traders in sync\n")
+    time.sleep(max(0, post_battle_sleep_time_s))
 
-    remaining_sleep_s = same_pseudo_rng.uniform(25, 30)
-    initial_remaining_sleep_s = remaining_sleep_s
-    print(f"Setup time: {initial_remaining_sleep_s:.2f}s")
+    setup_time_s = same_pseudo_rng.uniform(25, 30)
+    initial_setup_time_dt = datetime.datetime.now()
+    print(f"Planned setup time: {setup_time_s:.2f}s")
 
     print(f"Tapping on rematch")
     cliclick.click(utils.randomize_location(rematch_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(2.0, 0.75)
+    utils.random_sleep(2.0, 0.75)
 

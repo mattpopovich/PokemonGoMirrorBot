@@ -35,7 +35,7 @@ first_pokemon_coordinates = config.SETTINGS['first_pokemon_coordinates']
 second_pokemon_coordinates = config.SETTINGS['second_pokemon_coordinates']
 third_pokemon_coordinates = config.SETTINGS['third_pokemon_coordinates']
 done_button_coordinates = config.SETTINGS['done_button_coordinates']
-change_delay = config.SETTINGS['change_delay']
+change_prng = config.SETTINGS['change_prng']
 
 pixel_randomness = 10
 
@@ -46,7 +46,7 @@ now = datetime.datetime.now().replace(second=0, microsecond=0)
 seed_value = int(now.strftime("%Y%m%d%H%M"))  # e.g., 202411081231 for Nov 8, 2024, 12:31
 
 # Use the seed value for random operations
-modified_seed = seed_value + 1 if change_delay else seed_value
+modified_seed = seed_value + 1 if change_prng else seed_value
 random.seed(modified_seed)
 # A common PRNG between traders
 common_seed = int(now.strftime("%Y%m%d%H%M"))
@@ -71,7 +71,7 @@ cliclick.random_click(start_battle_coordinates, pixel_randomness)
 utils.random_sleep(3.0, 1.0)
 
 print(f"Clicking on desired league to battle in")
-cliclick.random_click(ultra_league_coordiantes, pixel_randomness)
+cliclick.random_click(great_league_coordiantes, pixel_randomness)
 utils.random_sleep(1.5, 0.75)
 
 print(f"Clicking on 'Let's Battle'")

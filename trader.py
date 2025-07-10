@@ -23,7 +23,7 @@ first_trade_pokemon_coordinates = config.SETTINGS['first_trade_pokemon_coordinat
 next_button_coordinates = config.SETTINGS['next_button_coordinates']
 confirm_button_coordinates = config.SETTINGS['confirm_button_coordinates']
 x_button_coordinates = config.SETTINGS['x_button_coordinates']
-change_delay = config.SETTINGS['change_delay']
+change_prng = config.SETTINGS['change_prng']
 
 pixel_randomness = 10
 
@@ -34,7 +34,7 @@ now = datetime.datetime.now().replace(second=0, microsecond=0)
 seed_value = int(now.strftime("%Y%m%d%H%M"))  # e.g., 202411081231 for Nov 8, 2024, 12:31
 
 # Use the seed value for random operations
-modified_seed = seed_value + 1 if change_delay else seed_value
+modified_seed = seed_value + 1 if change_prng else seed_value
 random.seed(modified_seed)
 # A common PRNG between traders
 common_seed = int(now.strftime("%Y%m%d%H%M"))

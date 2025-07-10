@@ -25,7 +25,7 @@ ultra_league_coordiantes = config.SETTINGS['ultra_league_coordinates']
 lets_battle_coordinates = config.SETTINGS['lets_battle_coordinates']
 use_party_coordinates = config.SETTINGS['use_party_coordinates']
 rematch_coordinates = config.SETTINGS['rematch_coordinates']
-change_delay = config.SETTINGS['change_delay']
+change_prng = config.SETTINGS['change_prng']
 
 pixel_randomness = 10
 
@@ -36,7 +36,7 @@ now = datetime.datetime.now().replace(second=0, microsecond=0)
 seed_value = int(now.strftime("%Y%m%d%H%M"))  # e.g., 202411081231 for Nov 8, 2024, 12:31
 
 # Use the seed value for random operations
-modified_seed = seed_value + 1 if change_delay else seed_value
+modified_seed = seed_value + 1 if change_prng else seed_value
 random.seed(modified_seed)
 # A common PRNG between traders
 common_seed = int(now.strftime("%Y%m%d%H%M"))
@@ -108,7 +108,7 @@ for i in range(num_battles):
 
     print(f"Tapping on rematch")
     cliclick.random_click(rematch_coordinates, pixel_randomness)
-    utils.random_sleep(2.0, 0.75)
+    utils.random_sleep(4.5, 1.0)
 
     print(f"Clicking on 'Use this party'")
     cliclick.random_click(use_party_coordinates, pixel_randomness)

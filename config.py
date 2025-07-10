@@ -27,12 +27,13 @@ systems = {
         "first_pokemon_in_party_coordinates": [3178, 1242],
         "use_party_coordinates": [3266, 1359],
         "rematch_coordinates": [3268, 1174],
-        # "sort_button_coordinates": [3388,1320],
+        # "sort_button_coordinates": [3388,1320],   # Unused
         "first_pokemon_coordinates": [3160, 1026],
         "second_pokemon_coordinates": [3267, 1026],
         "third_pokemon_coordinates": [3373, 1026],
         "done_button_coordinates": [3343, 1402],
-        "change_delay": False
+        "change_prng": False    # One of the devices should be false, the other true
+                                # This allows their 'randomness' to be different
     },
     "iPhone11ProMBAirLarger": {                 # iPhone Mirroring -> View -> Larger
         "start_battle_coordinates": [1608, 871],
@@ -54,12 +55,12 @@ systems = {
         "first_pokemon_in_party_coordinates": [1384, 828],
         "use_party_coordinates": [1499, 959],
         "rematch_coordinates": [1482, 750],
-        # "sort_button_coordinates": [1621, 915],
+        # "sort_button_coordinates": [1621, 915],   # Unused
         "first_pokemon_coordinates": [1367, 566],
         "second_pokemon_coordinates": [1485, 566],
         "third_pokemon_coordinates": [1602, 566],
         "done_button_coordinates": [1571, 1009],
-        "change_delay": True
+        "change_prng": True
     },
 }
 

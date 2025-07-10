@@ -1,6 +1,8 @@
 # Define the active system
 ACTIVE_SYSTEM = "iPhone15ProMaxWidescreen"
 
+# TODO: Scale these based on Ex. top left and bottom right corners or something
+#       Scale would be dependent on screen aspect ratio
 # Define system-specific coordinates
 #   Depending on which script you are running,
 #   not all of these need to be defined
@@ -17,6 +19,19 @@ systems = {
         "start_drag_next_poke": [3396, 1132],   # Right side of screen
         "end_drag_next_poke": [3147, 1132],     # Left side of screen
         "modify_favorite": [3401, 770],
+        "lets_do_it_coordinates": [3265, 1154],
+        "great_league_coordinates": [3272, 1042],
+        "ultra_league_coordinates": [3272, 1147],
+        "master_league_coordinates": [3272, 1251],
+        "lets_battle_coordinates": [3265, 1146],
+        "first_pokemon_in_party_coordinates": [3178, 1242],
+        "use_party_coordinates": [3266, 1359],
+        "rematch_coordinates": [3268, 1174],
+        "sort_button_coordinates": [3388,1320],
+        "first_pokemon_coordinates": [3160, 1026],
+        "second_pokemon_coordinates": [3267, 1026],
+        "third_pokemon_coordinates": [3373, 1026],
+        "done_button_coordinates": [3343, 1043],
         "change_delay": False
     },
     "iPhone11ProMBAirLarger": {                 # iPhone Mirroring -> View -> Larger

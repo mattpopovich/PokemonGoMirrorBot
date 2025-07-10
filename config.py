@@ -1,5 +1,5 @@
 # Define the active system
-ACTIVE_SYSTEM = "iPhone11ProMBAirLarger"
+ACTIVE_SYSTEM = "iPhone15ProMaxWidescreen"
 
 # TODO: Scale these based on Ex. top left and bottom right corners or something
 #       Scale would be dependent on screen aspect ratio
@@ -27,7 +27,7 @@ systems = {
         "first_pokemon_in_party_coordinates": [3178, 1242],
         "use_party_coordinates": [3266, 1359],
         "rematch_coordinates": [3268, 1174],
-        "sort_button_coordinates": [3388,1320],
+        # "sort_button_coordinates": [3388,1320],
         "first_pokemon_coordinates": [3160, 1026],
         "second_pokemon_coordinates": [3267, 1026],
         "third_pokemon_coordinates": [3373, 1026],
@@ -54,7 +54,7 @@ systems = {
         "first_pokemon_in_party_coordinates": [1384, 828],
         "use_party_coordinates": [1499, 959],
         "rematch_coordinates": [1482, 750],
-        "sort_button_coordinates": [1621, 915],
+        # "sort_button_coordinates": [1621, 915],
         "first_pokemon_coordinates": [1367, 566],
         "second_pokemon_coordinates": [1485, 566],
         "third_pokemon_coordinates": [1602, 566],

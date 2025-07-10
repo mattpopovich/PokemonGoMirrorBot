@@ -31,7 +31,6 @@ lets_battle_coordinates = config.SETTINGS['lets_battle_coordinates']
 use_party_coordinates = config.SETTINGS['use_party_coordinates']
 rematch_coordinates = config.SETTINGS['rematch_coordinates']
 first_pokemon_in_party_coordinates = config.SETTINGS['first_pokemon_in_party_coordinates']
-sort_button_coordinates = config.SETTINGS['sort_button_coordinates']
 first_pokemon_coordinates = config.SETTINGS['first_pokemon_coordinates']
 second_pokemon_coordinates = config.SETTINGS['second_pokemon_coordinates']
 third_pokemon_coordinates = config.SETTINGS['third_pokemon_coordinates']
@@ -72,8 +71,8 @@ print(f"Clicking on start battle")
 cliclick.click(utils.randomize_location(start_battle_coordinates, pixel_randomness))
 remaining_sleep_s -= utils.random_sleep(3.0, 1.0)
 
-print(f"Clicking on great league")
-cliclick.click(utils.randomize_location(great_league_coordiantes, pixel_randomness))
+print(f"Clicking on desired league to battle in")
+cliclick.click(utils.randomize_location(ultra_league_coordiantes, pixel_randomness))
 remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
 
 print(f"Clicking on 'Let's Battle'")
@@ -86,25 +85,17 @@ for i in range(num_battles):
     cliclick.click(utils.randomize_location(first_pokemon_in_party_coordinates, pixel_randomness))
     remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
 
-    # print(f"Clicking on sort button")
-    # cliclick.click(utils.randomize_location(sort_button_coordinates, pixel_randomness))
-    # remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
-
-    # print(f"Selecting CP to sort low at the top")
-    # cliclick.click(utils.randomize_location(sort_button_coordinates, pixel_randomness))
-    # remaining_sleep_s -= utils.random_sleep(1.5, 0.75)
-
     print(f"Clicking on first pokemon")
     cliclick.click(utils.randomize_location(first_pokemon_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.0, 0.75)
+    remaining_sleep_s -= utils.random_sleep(1.25, 0.5)
 
     print(f"Clicking on second pokemon")
     cliclick.click(utils.randomize_location(second_pokemon_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.0, 0.75)
+    remaining_sleep_s -= utils.random_sleep(1.25, 0.5)
 
     print(f"Clicking on third pokemon")
     cliclick.click(utils.randomize_location(third_pokemon_coordinates, pixel_randomness))
-    remaining_sleep_s -= utils.random_sleep(1.0, 0.75)
+    remaining_sleep_s -= utils.random_sleep(1.25, 0.5)
 
     print(f"Clicking on done button")
     cliclick.click(utils.randomize_location(done_button_coordinates, pixel_randomness))
@@ -118,7 +109,7 @@ for i in range(num_battles):
     time.sleep(max(0, remaining_sleep_s))
 
     print(f"Beginning battle {i+1}/{num_battles}")
-    remaining_sleep_s = same_pseudo_rng.uniform(44, 50)
+    remaining_sleep_s = same_pseudo_rng.uniform(42, 45)
     initial_remaining_sleep_s = remaining_sleep_s
 
     print(f"Clicking to get status of first loss")
@@ -138,7 +129,7 @@ for i in range(num_battles):
     print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
     time.sleep(max(0, remaining_sleep_s))
 
-    remaining_sleep_s = same_pseudo_rng.uniform(33, 38)
+    remaining_sleep_s = same_pseudo_rng.uniform(25, 30)
     initial_remaining_sleep_s = remaining_sleep_s
     print(f"Setup time: {initial_remaining_sleep_s:.2f}s")
 

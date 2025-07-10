@@ -21,9 +21,7 @@ import functions.utils as utils
 # Access the coordinates from the active system
 lets_do_it_coordinates = config.SETTINGS['lets_do_it_coordinates']
 start_battle_coordinates = config.SETTINGS['start_battle_coordinates']
-great_league_coordiantes = config.SETTINGS['great_league_coordinates']
 ultra_league_coordiantes = config.SETTINGS['ultra_league_coordinates']
-master_league_coordiantes = config.SETTINGS['master_league_coordinates']
 lets_battle_coordinates = config.SETTINGS['lets_battle_coordinates']
 use_party_coordinates = config.SETTINGS['use_party_coordinates']
 rematch_coordinates = config.SETTINGS['rematch_coordinates']
@@ -77,7 +75,7 @@ for i in range(num_battles):
     time.sleep(max(0, remaining_sleep_s))
 
     print(f"Beginning battle {i+1}/{num_battles}")
-    remaining_sleep_s = same_pseudo_rng.uniform(44, 50)
+    remaining_sleep_s = same_pseudo_rng.uniform(42, 45)
     initial_remaining_sleep_s = remaining_sleep_s
 
     print(f"Tapping to attack with first pokemon")
@@ -96,7 +94,7 @@ for i in range(num_battles):
     print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
     time.sleep(max(0, remaining_sleep_s))
 
-    remaining_sleep_s = same_pseudo_rng.uniform(33, 38)
+    remaining_sleep_s = same_pseudo_rng.uniform(25, 30)
     initial_remaining_sleep_s = remaining_sleep_s
     print(f"Setup time: {initial_remaining_sleep_s:.2f}s")
 

@@ -22,13 +22,13 @@ class Cliclick:
     def click(self, coordinates):
         """Click at the given [x, y] coordinates."""
         x, y = coordinates
-        print(f"Clicking at {coordinates}")
+        # print(f"Clicking at {coordinates}")
         return self.run_command(f"c:{x},{y}")
 
     def double_click(self, coordinates):
         """Double-click at the given [x, y] coordinates."""
         x, y = coordinates
-        print(f"Double-clicking at {coordinates}")
+        # print(f"Double-clicking at {coordinates}")
         return self.run_command(f"dc:{x},{y}")
 
     def start_drag(self, coordinates):

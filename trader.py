@@ -54,12 +54,12 @@ for i in range(num_trades):
     # Use if have two different seeds for the two traders
     #   (so that clicks won't be at the exact same time)
     #   but still keep them in sync
-    remaining_sleep_s = same_pseudo_rng.uniform(45, 55)
+    remaining_sleep_s = same_pseudo_rng.uniform(46, 55)
     initial_remaining_sleep_s = remaining_sleep_s
 
     print(f"Clicking on start trade")
     cliclick.random_click(start_trade_coordinates, pixel_randomness)
-    remaining_sleep_s -= utils.random_sleep(7.0, 1.5)
+    remaining_sleep_s -= utils.random_sleep(8.0, 1.5)
 
     print("Clicking on first pokemon available to trade")
     cliclick.random_click(first_trade_pokemon_coordinates, pixel_randomness)

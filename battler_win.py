@@ -101,7 +101,6 @@ for i in range(num_battles):
     print(f"Sleeping for {post_battle_sleep_time_s:.2f}s to keep traders in sync\n")
     time.sleep(max(0, post_battle_sleep_time_s))
 
-    print(f"Now: {datetime.datetime.now()}")
     setup_time_s = same_pseudo_rng.uniform(25, 30)
     initial_setup_time_dt = datetime.datetime.now()
     print(f"Planned setup time: {setup_time_s:.2f}s")

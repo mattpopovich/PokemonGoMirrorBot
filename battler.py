@@ -46,6 +46,7 @@ elif args.win and args.lose:
     sys.exit("ERROR: can only specify one of --win or --lose arguments")
 
 # Access the coordinates from the active system
+lets_do_it_coordinates = config.SETTINGS['lets_do_it_coordinates']
 start_battle_coordinates = config.SETTINGS['start_battle_coordinates']
 great_league_coordiantes = config.SETTINGS['great_league_coordinates']
 ultra_league_coordiantes = config.SETTINGS['ultra_league_coordinates']

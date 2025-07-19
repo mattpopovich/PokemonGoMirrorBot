@@ -27,11 +27,11 @@ The easiest way to find out the color at a certain location is by using macOS's 
 ### Helpful search strings
 * See all pokemon that can evolve with 0 candy
   * `64,67,75,93,525,533,588,616,708,710&traded`
-* See all pokemon that were caught within 1km of your current location
+* See all pokemon that were caught within 1km of your current location (1 trade candy)
   * `distance1`
-* See all pokemon that were caught within 11-99km of your current location
+* See all pokemon that were caught within 11-99km of your current location (2 trade candies)
   * `distance11-&distance99`
-* See all pokemon that were caught further than 101km away
+* See all pokemon that were caught further than 101km away (3 trade candies)
   * `distance101-`
 
 ### My routine

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+### I first tried to make this script in bash, but quickly realized that if I wanted sufficient logic,
+#   I should probably use a higher level language.
+
 seed=12345
 
 # Function to randomize the location with specified randomness range

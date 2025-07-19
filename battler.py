@@ -7,6 +7,9 @@ Run this script as `python3 battler.py --lose` for the account that you want to 
         very low CP pokemon, so I sort by CP (low at the top).
     Click on your avatar (bottom left), click on the desired friend that will win
         battles, then run this script.
+You will also need to add the flag `--great`, `--ultra`, or `--master` for selecting which 
+    league that you want to battle in.
+Ex. `python3 battler.py --lose --great`
 
 Run this script as `python3 battler.py --win` for the account that you want to win with.
     Leave this account on the map screen, then run this script
@@ -38,12 +41,30 @@ parser.add_argument(
     help="When running the script, this account will lose battles", 
     action="store_true"
 )
+parser.add_argument(
+    "-g", "--great", 
+    help="Perform battles in the great league", 
+    action="store_true"
+)
+parser.add_argument(
+    "-u", "--ultra", 
+    help="Perform battles in the ultra league", 
+    action="store_true"
+)
+parser.add_argument(
+    "-m", "--master", 
+    help="Perform battles in the master league", 
+    action="store_true"
+)
 args = parser.parse_args()
 
 if not args.win and not args.lose:
     sys.exit("ERROR: must specify either --win or --lose argument")
 elif args.win and args.lose:
     sys.exit("ERROR: can only specify one of --win or --lose arguments")
+
+if args.great + args.ultra + args.master != 1:
+    sys.exit("ERROR: must specify one of --great, --ultra, or --master")
 
 # Access the coordinates from the active system
 lets_do_it_coordinates = config.SETTINGS['lets_do_it_coordinates']
@@ -95,8 +116,15 @@ if args.lose:
     cliclick.random_click(start_battle_coordinates, pixel_randomness)
     utils.random_sleep(3.0, 1.0)
 
-    print(f"Clicking on desired league to battle in")
-    cliclick.random_click(great_league_coordiantes, pixel_randomness)
+    if args.great:
+        print(f"Clicking on great league")
+        cliclick.random_click(great_league_coordiantes, pixel_randomness)
+    elif args.ultra:
+        print(f"Clicking on ultra league")
+        cliclick.random_click(ultra_league_coordiantes, pixel_randomness)
+    elif args.master:
+        print(f"Clicking on master league")
+        cliclick.random_click(master_league_coordiantes, pixel_randomness)
     utils.random_sleep(1.5, 0.75)
 
     print(f"Clicking on 'Let's Battle'")

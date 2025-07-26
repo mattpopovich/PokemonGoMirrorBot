@@ -52,7 +52,7 @@ def log_trade(filename: str) -> None:
     """Logs the current date and time to a trades log file."""
     now = datetime.datetime.now()
     with open(filename, 'a') as f:
-        f.write(f"{now}\n")
+        f.write(f"{now.isoformat()}\n")
 
 def get_trade_counts(filename: str) -> tuple[int, int]:
     """

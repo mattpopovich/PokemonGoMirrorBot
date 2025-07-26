@@ -6,6 +6,8 @@ Author: Matt Popovich (mattpopovich.com)
 
 import random
 import time
+import datetime
+import os
 
 def randomize_location(location: list[int], pixel_randomness: int):
     """
@@ -45,3 +47,24 @@ def random_sleep(base_sleep_time_s: float, randomness_s: float):
     time.sleep(actual_sleep_time)
 
     return actual_sleep_time
+
+def log_trade(filename: str) -> None:
+    """Logs the current date and time to a trades log file."""
+    now = datetime.datetime.now()
+    with open(filename, 'a') as f:
+        f.write(f"{now}\n")
+
+def get_trade_counts(filename: str) -> tuple[int, int]:
+    """
+    Returns a tuple with the number of trades since midnight and the total number of trades.
+    If the log file does not exist, returns (0, 0).
+    """
+    if not os.path.exists(filename):
+        print(f"WARNING: Log file {filename} does not exist. This is expected if this is the first run.")
+        return 0, 0
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    num_total_trades = len(lines)
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    num_trades_since_midnight = sum(1 for line in lines if line.startswith(today))
+    return num_trades_since_midnight, num_total_trades

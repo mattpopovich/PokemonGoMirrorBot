@@ -26,6 +26,7 @@ x_button_coordinates = config.SETTINGS['x_button_coordinates']
 change_prng = config.SETTINGS['change_prng']
 
 pixel_randomness = 10
+LOG_FILE = "trader_log.txt"
 
 # Get the current date and time up to the current minute
 now = datetime.datetime.now().replace(second=0, microsecond=0)
@@ -50,6 +51,8 @@ cliclick.random_click(start_trade_coordinates, pixel_randomness)
 num_trades = 35
 for i in range(num_trades):
     print(f"Beginning trade {i+1}/{num_trades}")
+    num_trades_since_midnight, num_total_trades = utils.get_trade_counts(LOG_FILE)
+    print(f"\t{num_trades_since_midnight} trades made today, {num_total_trades} all time")
 
     # Use if have two different seeds for the two traders
     #   (so that clicks won't be at the exact same time)
@@ -72,6 +75,7 @@ for i in range(num_trades):
     print("Clicking on confirm")
     cliclick.random_click(confirm_button_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(20.0, 1.5)
+    utils.log_trade(LOG_FILE)
 
     print("Clicking on X")
     cliclick.random_click(x_button_coordinates, pixel_randomness)

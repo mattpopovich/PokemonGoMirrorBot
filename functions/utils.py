@@ -6,8 +6,8 @@ Author: Matt Popovich (mattpopovich.com)
 
 import random
 import time
-import datetime
-import os
+from datetime import datetime
+
 
 def randomize_location(location: list[int], pixel_randomness: int):
     """
@@ -50,7 +50,7 @@ def random_sleep(base_sleep_time_s: float, randomness_s: float):
 
 def log_trade(filename: str) -> None:
     """Logs the current date and time to a trades log file."""
-    now = datetime.datetime.now()
+    now = datetime.now()
     with open(filename, 'a') as f:
         f.write(f"{now.isoformat()}\n")
 
@@ -59,12 +59,26 @@ def get_trade_counts(filename: str) -> tuple[int, int]:
     Returns a tuple with the number of trades since midnight and the total number of trades.
     If the log file does not exist, returns (0, 0).
     """
-    if not os.path.exists(filename):
+    trades_total = 0
+    trades_since_midnight = 0
+    today = datetime.now().date()
+
+    try:
+        with open(filename, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue  # skip empty lines
+                try:
+                    dt = datetime.fromisoformat(line)
+                    trades_total += 1
+                    if dt.date() == today:
+                        trades_since_midnight += 1
+                except ValueError:
+                    # Skip lines that aren't valid ISO 8601 timestamps
+                    continue
+    except FileNotFoundError:
         print(f"WARNING: Log file {filename} does not exist. This is expected if this is the first run.")
         return 0, 0
-    with open(filename, 'r') as f:
-        lines = f.readlines()
-    num_total_trades = len(lines)
-    today = datetime.datetime.now().strftime("%Y-%m-%d")
-    num_trades_since_midnight = sum(1 for line in lines if line.startswith(today))
-    return num_trades_since_midnight, num_total_trades
+
+    return trades_since_midnight, trades_total

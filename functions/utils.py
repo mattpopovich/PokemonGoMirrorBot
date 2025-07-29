@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 
 
-def randomize_location(location: list[int], pixel_randomness: int):
+def randomize_location(location: list[int], pixel_randomness: int) -> list[int]:
     """
     Randomizes the location coordinates within a specified pixel_randomness range.
 
@@ -29,7 +29,7 @@ def randomize_location(location: list[int], pixel_randomness: int):
 
     return [new_x, new_y]
 
-def random_sleep(base_sleep_time_s: float, randomness_s: float):
+def random_sleep(base_sleep_time_s: float, randomness_s: float, unittest: bool = False) -> float:
     """
     Sleeps for a random duration based on base sleep time and randomness_s range.
 
@@ -43,8 +43,9 @@ def random_sleep(base_sleep_time_s: float, randomness_s: float):
     offset = random.uniform(-randomness_s, randomness_s)
     actual_sleep_time = max(0, base_sleep_time_s + offset)
 
-    print(f"  Sleeping for {actual_sleep_time:.2f}s")
-    time.sleep(actual_sleep_time)
+    if not unittest:
+        print(f"  Sleeping for {actual_sleep_time:.2f}s")
+        time.sleep(actual_sleep_time)
 
     return actual_sleep_time
 

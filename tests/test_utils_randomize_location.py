@@ -2,8 +2,6 @@
 Test utils.py's randomize_location function.
 """
 
-import pytest
-import random
 from functions.utils import randomize_location
 
 def test_randomize_location_within_bounds():
@@ -37,3 +35,9 @@ def test_zero_randomness_returns_same_location():
     pixel_randomness = 0
     new_location = randomize_location(location, pixel_randomness)
     assert new_location == location
+
+def test_randomize_location_return_type():
+    result = randomize_location([0, 0], 10)
+    assert isinstance(result, list)
+    assert len(result) == 2
+    assert all(isinstance(coord, int) for coord in result)

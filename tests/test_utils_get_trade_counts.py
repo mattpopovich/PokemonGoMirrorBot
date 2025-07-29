@@ -72,3 +72,11 @@ def test_invalid_lines_are_skipped():
     assert since_midnight == 1  # Only the first line is from today
     assert total == 2           # Two valid timestamps
     os.remove(filename)  # Clean up the temporary file after the test
+
+def test_get_trade_counts_return_type():
+    filename = "dummy_log.txt"
+    assert not os.path.exists(filename), "Dummy log file should not exist before the test."
+    result = get_trade_counts(filename)
+    assert isinstance(result, tuple)
+    assert len(result) == 2
+    assert all(isinstance(count, int) for count in result)

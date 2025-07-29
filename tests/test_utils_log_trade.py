@@ -65,3 +65,9 @@ def test_log_trades_does_not_overwrite_existing_content():
     assert len(lines) == 2
 
     os.remove(log_file_name)
+
+def test_log_trade_return_type():
+    filename = "dummy_log.txt"
+    result = log_trade(filename)
+    assert result is None
+    os.remove(filename)

@@ -2,6 +2,7 @@ import subprocess
 
 from functions.utils import randomize_location
 
+
 class Cliclick:
     def __init__(self, executable="cliclick"):
         self.executable = executable
@@ -10,7 +11,13 @@ class Cliclick:
         """Run a cliclick command with given arguments."""
         command = [self.executable] + list(args)
         try:
-            result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            result = subprocess.run(
+                command,
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+            )
             return result.stdout.strip()
         except subprocess.CalledProcessError as e:
             print(f"Error: {e.stderr.strip()}")

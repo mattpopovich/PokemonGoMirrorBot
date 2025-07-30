@@ -18,7 +18,10 @@ import config
 from cliclick import Cliclick
 import functions.utils as utils
 
-def ensure_correct_screen(expected_color: list[int], coordinates: list[int], tolerance: int = 0):
+
+def ensure_correct_screen(
+    expected_color: list[int], coordinates: list[int], tolerance: int = 0
+):
     """
     This function ensures that you are currently on the expected screen
     If not, the program will exit
@@ -34,14 +37,17 @@ def ensure_correct_screen(expected_color: list[int], coordinates: list[int], tol
         color_str: str = cliclick.get_color(coordinates)
         color: list[int] = list(map(int, color_str.split()))
         if rgb_values_close(color, expected_color, tolerance):
-            print(f"Expected color {expected_color} and was {color}. Within {toler}")
+            print(f"Expected color {expected_color} and was {color}. Within {tolerance}")
             return
         else:
             print(f"Expected color {expected_color} but was {color}... retrying")
             time.sleep(1.0)
 
-    sys.exit(f"Likely not at Pokemon details screen, script may have failed. "
-                 f"Expected color {expected_color} but was {color}")
+    sys.exit(
+        f"Likely not at Pokemon details screen, script may have failed. "
+        f"Expected color {expected_color} but was {color}"
+    )
+
 
 def rgb_values_close(rgb1, rgb2, tolerance):
     """
@@ -54,18 +60,19 @@ def rgb_values_close(rgb1, rgb2, tolerance):
     """
     return all(abs(a - b) <= tolerance for a, b in zip(rgb1, rgb2))
 
+
 # Access the coordinates from the active system
 SCREEN_CAPTURE_ALWAYS = config.SCREEN_CAPTURE_ALWAYS
 SCREEN_CAPTURE_MINIMAL = config.SCREEN_CAPTURE_MINIMAL
 
-start_trade_coordinates = config.SETTINGS['start_trade_coordinates']
-first_trade_pokemon_coordinates = config.SETTINGS['first_trade_pokemon_coordinates']
-between_first_second_pokemon = config.SETTINGS['between_first_second_pokemon']
-next_button_coordinates = config.SETTINGS['next_button_coordinates']
-confirm_button_coordinates = config.SETTINGS['confirm_button_coordinates']
-pokemon_details_left_health_white = config.SETTINGS['pokemon_details_left_health_white']
-x_button_coordinates = config.SETTINGS['x_button_coordinates']
-change_prng = config.SETTINGS['change_prng']
+start_trade_coordinates = config.SETTINGS["start_trade_coordinates"]
+first_trade_pokemon_coordinates = config.SETTINGS["first_trade_pokemon_coordinates"]
+between_first_second_pokemon = config.SETTINGS["between_first_second_pokemon"]
+next_button_coordinates = config.SETTINGS["next_button_coordinates"]
+confirm_button_coordinates = config.SETTINGS["confirm_button_coordinates"]
+pokemon_details_left_health_white = config.SETTINGS["pokemon_details_left_health_white"]
+x_button_coordinates = config.SETTINGS["x_button_coordinates"]
+change_prng = config.SETTINGS["change_prng"]
 
 pixel_randomness = 10
 LOG_FILE = "trader_log.txt"
@@ -125,7 +132,7 @@ for i in range(num_trades):
 
     print("Clicking on confirm")
     if SCREEN_CAPTURE_ALWAYS or SCREEN_CAPTURE_MINIMAL:
-        ensure_correct_screen([126, 184, 241], first_pokemon_coordinates, 5)
+        ensure_correct_screen([126, 184, 241], first_trade_pokemon_coordinates, 5)
     cliclick.random_click(confirm_button_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(20.0, 1.5)
     utils.log_trade(LOG_FILE)

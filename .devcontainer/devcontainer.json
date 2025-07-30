@@ -19,7 +19,7 @@
 		"vscode": {
 			"extensions": [
 				"ms-python.python", // Python intellisense
-				// "ms-python.black-formatter", // Black formatter	// TODO: Enable later
+				"ms-python.black-formatter", // Black formatter
 				// "mechatroner.rainbow-csv", // Easier to view csv files
 				"streetsidesoftware.code-spell-checker", // Spell check
 				"github.vscode-github-actions"

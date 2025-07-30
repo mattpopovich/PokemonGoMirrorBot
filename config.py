@@ -13,17 +13,17 @@ SCREEN_CAPTURE_MINIMAL = False
 #   Depending on which script you are running,
 #   not all of these need to be defined
 systems = {
-    "iPhone15ProMaxWidescreen": {               # Widescreen monitor
+    "iPhone15ProMaxWidescreen": {  # Widescreen monitor
         "start_battle_coordinates": [3377, 1285],
         "start_trade_coordinates": [3283, 1285],
         "first_trade_pokemon_coordinates": [3161, 953],
-        "between_first_second_pokemon": [3213, 947],    # Whitespace
+        "between_first_second_pokemon": [3213, 947],  # Whitespace
         "next_button_coordinates": [3268, 1321],
         "confirm_button_coordinates": [3141, 1086],
-        "pokemon_details_left_health_white": [3146, 1021],  # Whitespace left of the health bar
+        "pokemon_details_left_health_white": [3146, 1021],  # Whitespace left of health bar # fmt: skip
         "x_button_coordinates": [3268, 1389],
-        "start_drag_next_poke": [3396, 1132],   # Right side of screen
-        "end_drag_next_poke": [3147, 1132],     # Left side of screen
+        "start_drag_next_poke": [3396, 1132],  # Right side of screen
+        "end_drag_next_poke": [3147, 1132],  # Left side of screen
         "modify_favorite": [3401, 770],
         "lets_do_it_coordinates": [3265, 1154],
         "great_league_coordinates": [3272, 1042],
@@ -38,10 +38,9 @@ systems = {
         "second_pokemon_coordinates": [3267, 1026],
         "third_pokemon_coordinates": [3373, 1026],
         "done_button_coordinates": [3343, 1402],
-        "change_prng": False    # One of the devices should be false, the other true
-                                # This allows their 'randomness' to be different
+        "change_prng": False,  # One of the devices should be false, the other true. This allows their 'randomness' to be different
     },
-    "iPhone11ProMBAirLarger": {                 # iPhone Mirroring -> View -> Larger
+    "iPhone11ProMBAirLarger": {  # iPhone Mirroring -> View -> Larger
         "start_battle_coordinates": [1608, 871],
         "start_trade_coordinates": [1493, 871],
         "first_trade_pokemon_coordinates": [1366, 489],
@@ -52,7 +51,7 @@ systems = {
         "x_button_coordinates": [1486, 995],
         "start_drag_next_poke": [1633, 710],
         "end_drag_next_poke": [1340, 710],
-        "modify_favorite": [1636,294],
+        "modify_favorite": [1636, 294],
         "lets_do_it_coordinates": [1483, 728],
         "great_league_coordinates": [1485, 604],
         "ultra_league_coordinates": [1486, 720],
@@ -66,7 +65,7 @@ systems = {
         "second_pokemon_coordinates": [1485, 566],
         "third_pokemon_coordinates": [1602, 566],
         "done_button_coordinates": [1571, 1009],
-        "change_prng": True
+        "change_prng": True,
     },
 }
 

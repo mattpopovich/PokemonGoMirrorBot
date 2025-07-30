@@ -18,12 +18,15 @@ def test_log_trade_correct_time():
         mock_datetime.now.return_value.isoformat.return_value = fixed_time
         log_trade(log_file_name)
 
-    with open(log_file_name, 'r') as f:
+    with open(log_file_name, "r") as f:
         contents = f.read()
 
-    assert contents == fixed_time + '\n', f"Contents read from file was {contents}, expected {fixed_time}"
+    assert (
+        contents == fixed_time + "\n"
+    ), f"Contents read from file was {contents}, expected {fixed_time}"
 
     os.remove(log_file_name)
+
 
 def test_log_trade_appends_lines():
     with tempfile.NamedTemporaryFile(delete=False) as tmp:
@@ -38,7 +41,7 @@ def test_log_trade_appends_lines():
         mock_datetime.now.return_value.isoformat.return_value = t2
         log_trade(log_file_name)
 
-    with open(log_file_name, 'r') as f:
+    with open(log_file_name, "r") as f:
         lines = f.readlines()
 
     assert lines[0].strip() == t1
@@ -47,8 +50,9 @@ def test_log_trade_appends_lines():
 
     os.remove(log_file_name)
 
+
 def test_log_trades_does_not_overwrite_existing_content():
-    with tempfile.NamedTemporaryFile(delete=False, mode='w') as tmp:
+    with tempfile.NamedTemporaryFile(delete=False, mode="w") as tmp:
         tmp.write("existing line\n")
         log_file_name = tmp.name
 
@@ -57,7 +61,7 @@ def test_log_trades_does_not_overwrite_existing_content():
         mock_datetime.now.return_value.isoformat.return_value = new_time
         log_trade(log_file_name)
 
-    with open(log_file_name, 'r') as f:
+    with open(log_file_name, "r") as f:
         lines = f.readlines()
 
     assert lines[0].strip() == "existing line"
@@ -65,6 +69,7 @@ def test_log_trades_does_not_overwrite_existing_content():
     assert len(lines) == 2
 
     os.remove(log_file_name)
+
 
 def test_log_trade_return_type():
     filename = "dummy_log.txt"

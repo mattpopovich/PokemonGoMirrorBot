@@ -1,0 +1,17 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: psf/black@stable # Use the official Black GitHub Action
+        with:
+          # Optional: Specify the Black version to use
+          # version: "25.1.0"
+          # Optional: Read Black version from pyproject.toml
+          # use_pyproject: true
+          # Optional: Pass additional arguments to Black (e.g., --check --diff)
+          options: "--line-length 90 --check --diff"

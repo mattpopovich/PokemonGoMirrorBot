@@ -10,6 +10,9 @@ RUN apt-get update && apt-get upgrade -y
 # Unit testing
 RUN pip3 install --upgrade pytest
 
+# ImageGrab
+RUN pip3 install --upgrade pillow
+
 # Set working directory
 WORKDIR /app
 

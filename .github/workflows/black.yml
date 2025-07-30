@@ -14,4 +14,4 @@ jobs:
           # Optional: Read Black version from pyproject.toml
           # use_pyproject: true
           # Optional: Pass additional arguments to Black (e.g., --check --diff)
-          options: "--line-length 90"
+          options: "--line-length 90 --check --diff"

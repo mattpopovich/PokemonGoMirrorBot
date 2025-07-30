@@ -9,13 +9,13 @@ from datetime import datetime, timedelta
 from functions.utils import get_trade_counts
 
 
-
 def create_temp_file_with_lines(lines) -> str:
     """Create a temporary file with the given lines, returns the file name."""
-    tmp = tempfile.NamedTemporaryFile(mode='w+', delete=False)
-    tmp.write('\n'.join(lines))
+    tmp = tempfile.NamedTemporaryFile(mode="w+", delete=False)
+    tmp.write("\n".join(lines))
     tmp.flush()
     return tmp.name
+
 
 def test_no_trades():
     filename = create_temp_file_with_lines([])
@@ -23,6 +23,7 @@ def test_no_trades():
     assert since_midnight == 0
     assert total == 0
     os.remove(filename)  # Clean up the temporary file after the test
+
 
 def test_file_does_not_exist():
     filename = "this_file_should_not_exist.txt"
@@ -32,17 +33,16 @@ def test_file_does_not_exist():
     result = get_trade_counts(filename)
     assert result == (0, 0)
 
+
 def test_all_trades_today():
     now = datetime.now()
-    lines = [
-        (now - timedelta(minutes=i)).isoformat()
-        for i in range(3)
-    ]
+    lines = [(now - timedelta(minutes=i)).isoformat() for i in range(3)]
     filename = create_temp_file_with_lines(lines)
     since_midnight, total = get_trade_counts(filename)
     assert since_midnight == 3
     assert total == 3
     os.remove(filename)  # Clean up the temporary file after the test
+
 
 def test_mixed_trades():
     """Test with trades from today and previous days."""
@@ -59,6 +59,7 @@ def test_mixed_trades():
     assert total == 3
     os.remove(filename)  # Clean up the temporary file after the test
 
+
 def test_invalid_lines_are_skipped():
     now = datetime.now()
     lines = [
@@ -70,12 +71,13 @@ def test_invalid_lines_are_skipped():
     filename = create_temp_file_with_lines(lines)
     since_midnight, total = get_trade_counts(filename)
     assert since_midnight == 1  # Only the first line is from today
-    assert total == 2           # Two valid timestamps
+    assert total == 2  # Two valid timestamps
     os.remove(filename)  # Clean up the temporary file after the test
+
 
 def test_get_trade_counts_return_type():
     filename = "dummy_log.txt"
-    assert not os.path.exists(filename), "Dummy log file should not exist before the test."
+    assert not os.path.exists(filename), "Dummy log file should not exist before the test"
     result = get_trade_counts(filename)
     assert isinstance(result, tuple)
     assert len(result) == 2

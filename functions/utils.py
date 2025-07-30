@@ -29,7 +29,10 @@ def randomize_location(location: list[int], pixel_randomness: int) -> list[int]:
 
     return [new_x, new_y]
 
-def random_sleep(base_sleep_time_s: float, randomness_s: float, unittest: bool = False) -> float:
+
+def random_sleep(
+    base_sleep_time_s: float, randomness_s: float, unittest: bool = False
+) -> float:
     """
     Sleeps for a random duration based on base sleep time and randomness_s range.
 
@@ -49,11 +52,13 @@ def random_sleep(base_sleep_time_s: float, randomness_s: float, unittest: bool =
 
     return actual_sleep_time
 
+
 def log_trade(filename: str) -> None:
     """Logs the current date and time to a trades log file."""
     now = datetime.now()
-    with open(filename, 'a') as f:
+    with open(filename, "a") as f:
         f.write(f"{now.isoformat()}\n")
+
 
 def get_trade_counts(filename: str) -> tuple[int, int]:
     """
@@ -65,7 +70,7 @@ def get_trade_counts(filename: str) -> tuple[int, int]:
     today = datetime.now().date()
 
     try:
-        with open(filename, 'r') as f:
+        with open(filename, "r") as f:
             for line in f:
                 line = line.strip()
                 if not line:
@@ -79,7 +84,9 @@ def get_trade_counts(filename: str) -> tuple[int, int]:
                     # Skip lines that aren't valid ISO 8601 timestamps
                     continue
     except FileNotFoundError:
-        print(f"WARNING: Log file {filename} does not exist. This is expected if this is the first run.")
+        print(
+            f"WARNING: Log file {filename} does not exist. This is expected if this is the first run."
+        )
         return 0, 0
 
     return trades_since_midnight, trades_total

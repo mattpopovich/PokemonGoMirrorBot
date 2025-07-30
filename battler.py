@@ -65,9 +65,9 @@ if args.great + args.ultra + args.master != 1:
 # Access the coordinates from the active system
 lets_do_it_coordinates = config.SETTINGS["lets_do_it_coordinates"]
 start_battle_coordinates = config.SETTINGS["start_battle_coordinates"]
-great_league_coordiantes = config.SETTINGS["great_league_coordinates"]
-ultra_league_coordiantes = config.SETTINGS["ultra_league_coordinates"]
-master_league_coordiantes = config.SETTINGS["master_league_coordinates"]
+great_league_coordinates = config.SETTINGS["great_league_coordinates"]
+ultra_league_coordinates = config.SETTINGS["ultra_league_coordinates"]
+master_league_coordinates = config.SETTINGS["master_league_coordinates"]
 lets_battle_coordinates = config.SETTINGS["lets_battle_coordinates"]
 use_party_coordinates = config.SETTINGS["use_party_coordinates"]
 rematch_coordinates = config.SETTINGS["rematch_coordinates"]
@@ -114,13 +114,13 @@ if args.lose:
 
     if args.great:
         print(f"Clicking on great league")
-        cliclick.random_click(great_league_coordiantes, pixel_randomness)
+        cliclick.random_click(great_league_coordinates, pixel_randomness)
     elif args.ultra:
         print(f"Clicking on ultra league")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness)
+        cliclick.random_click(ultra_league_coordinates, pixel_randomness)
     elif args.master:
         print(f"Clicking on master league")
-        cliclick.random_click(master_league_coordiantes, pixel_randomness)
+        cliclick.random_click(master_league_coordinates, pixel_randomness)
     utils.random_sleep(1.5, 0.75)
 
     print(f"Clicking on 'Let's Battle'")
@@ -174,28 +174,28 @@ for i in range(num_battles):
 
     if args.win:
         print(f"Tapping to attack with first pokemon")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
+        cliclick.random_click(ultra_league_coordinates, pixel_randomness * 4)
         utils.random_sleep(15.0, 1.0)
 
         print(f"Tapping to attack with second pokemon")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
+        cliclick.random_click(ultra_league_coordinates, pixel_randomness * 4)
         utils.random_sleep(9.0, 2.0)
 
         print(f"Tapping to attack with third pokemon")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
+        cliclick.random_click(ultra_league_coordinates, pixel_randomness * 4)
         utils.random_sleep(11.0, 2.0)
     else:
         print(f"Clicking to get status of first loss")
         utils.random_sleep(2.0, 0.5)
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
+        cliclick.random_click(ultra_league_coordinates, pixel_randomness * 4)
         utils.random_sleep(15.0, 1.0)
 
         print(f"Clicking to get status of second loss")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
+        cliclick.random_click(ultra_league_coordinates, pixel_randomness * 4)
         utils.random_sleep(9.0, 2.0)
 
         print(f"Clicking to get status of third loss")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
+        cliclick.random_click(ultra_league_coordinates, pixel_randomness * 4)
         utils.random_sleep(11.0, 2.0)
 
     finish_battle_time_dt = datetime.datetime.now()

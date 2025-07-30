@@ -35,7 +35,7 @@ class Cliclick:
         return self.run_command(f"c:{x},{y}")
 
     def random_click(self, coordinates: list[int], pixel_randomness: int):
-        """Click at the given [x,y] coordiantes within a specified pixel_randomness range"""
+        """Click at the given [x,y] coordinates within a specified pixel_randomness range"""
         return self.click(randomize_location(coordinates, pixel_randomness))
 
     def double_click(self, coordinates: list[int]):

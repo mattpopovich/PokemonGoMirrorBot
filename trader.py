@@ -18,12 +18,12 @@ from cliclick import Cliclick
 import functions.utils as utils
 
 # Access the coordinates from the active system
-start_trade_coordinates = config.SETTINGS['start_trade_coordinates']
-first_trade_pokemon_coordinates = config.SETTINGS['first_trade_pokemon_coordinates']
-next_button_coordinates = config.SETTINGS['next_button_coordinates']
-confirm_button_coordinates = config.SETTINGS['confirm_button_coordinates']
-x_button_coordinates = config.SETTINGS['x_button_coordinates']
-change_prng = config.SETTINGS['change_prng']
+start_trade_coordinates = config.SETTINGS["start_trade_coordinates"]
+first_trade_pokemon_coordinates = config.SETTINGS["first_trade_pokemon_coordinates"]
+next_button_coordinates = config.SETTINGS["next_button_coordinates"]
+confirm_button_coordinates = config.SETTINGS["confirm_button_coordinates"]
+x_button_coordinates = config.SETTINGS["x_button_coordinates"]
+change_prng = config.SETTINGS["change_prng"]
 
 pixel_randomness = 10
 LOG_FILE = "trader_log.txt"

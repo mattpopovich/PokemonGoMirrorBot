@@ -7,7 +7,7 @@ Run this script as `python3 battler.py --lose` for the account that you want to 
         very low CP pokemon, so I sort by CP (low at the top).
     Click on your avatar (bottom left), click on the desired friend that will win
         battles, then run this script.
-You will also need to add the flag `--great`, `--ultra`, or `--master` for selecting which 
+You will also need to add the flag `--great`, `--ultra`, or `--master` for selecting which
     league that you want to battle in.
 Ex. `python3 battler.py --lose --great`
 
@@ -32,29 +32,25 @@ import functions.utils as utils
 # Parse arguments
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "-l", "--lose", 
-    help="When running the script, this account will win battles", 
-    action="store_true"
+    "-l",
+    "--lose",
+    help="When running the script, this account will win battles",
+    action="store_true",
 )
 parser.add_argument(
-    "-w", "--win", 
-    help="When running the script, this account will lose battles", 
-    action="store_true"
+    "-w",
+    "--win",
+    help="When running the script, this account will lose battles",
+    action="store_true",
 )
 parser.add_argument(
-    "-g", "--great", 
-    help="Perform battles in the great league", 
-    action="store_true"
+    "-g", "--great", help="Perform battles in the great league", action="store_true"
 )
 parser.add_argument(
-    "-u", "--ultra", 
-    help="Perform battles in the ultra league", 
-    action="store_true"
+    "-u", "--ultra", help="Perform battles in the ultra league", action="store_true"
 )
 parser.add_argument(
-    "-m", "--master", 
-    help="Perform battles in the master league", 
-    action="store_true"
+    "-m", "--master", help="Perform battles in the master league", action="store_true"
 )
 args = parser.parse_args()
 
@@ -67,20 +63,20 @@ if args.great + args.ultra + args.master != 1:
     sys.exit("ERROR: must specify one of --great, --ultra, or --master")
 
 # Access the coordinates from the active system
-lets_do_it_coordinates = config.SETTINGS['lets_do_it_coordinates']
-start_battle_coordinates = config.SETTINGS['start_battle_coordinates']
-great_league_coordiantes = config.SETTINGS['great_league_coordinates']
-ultra_league_coordiantes = config.SETTINGS['ultra_league_coordinates']
-master_league_coordiantes = config.SETTINGS['master_league_coordinates']
-lets_battle_coordinates = config.SETTINGS['lets_battle_coordinates']
-use_party_coordinates = config.SETTINGS['use_party_coordinates']
-rematch_coordinates = config.SETTINGS['rematch_coordinates']
-first_pokemon_in_party_coordinates = config.SETTINGS['first_pokemon_in_party_coordinates']
-first_pokemon_coordinates = config.SETTINGS['first_pokemon_coordinates']
-second_pokemon_coordinates = config.SETTINGS['second_pokemon_coordinates']
-third_pokemon_coordinates = config.SETTINGS['third_pokemon_coordinates']
-done_button_coordinates = config.SETTINGS['done_button_coordinates']
-change_prng = config.SETTINGS['change_prng']
+lets_do_it_coordinates = config.SETTINGS["lets_do_it_coordinates"]
+start_battle_coordinates = config.SETTINGS["start_battle_coordinates"]
+great_league_coordiantes = config.SETTINGS["great_league_coordinates"]
+ultra_league_coordiantes = config.SETTINGS["ultra_league_coordinates"]
+master_league_coordiantes = config.SETTINGS["master_league_coordinates"]
+lets_battle_coordinates = config.SETTINGS["lets_battle_coordinates"]
+use_party_coordinates = config.SETTINGS["use_party_coordinates"]
+rematch_coordinates = config.SETTINGS["rematch_coordinates"]
+first_pokemon_in_party_coordinates = config.SETTINGS["first_pokemon_in_party_coordinates"]
+first_pokemon_coordinates = config.SETTINGS["first_pokemon_coordinates"]
+second_pokemon_coordinates = config.SETTINGS["second_pokemon_coordinates"]
+third_pokemon_coordinates = config.SETTINGS["third_pokemon_coordinates"]
+done_button_coordinates = config.SETTINGS["done_button_coordinates"]
+change_prng = config.SETTINGS["change_prng"]
 
 pixel_randomness = 10
 
@@ -178,28 +174,28 @@ for i in range(num_battles):
 
     if args.win:
         print(f"Tapping to attack with first pokemon")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
+        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
         utils.random_sleep(15.0, 1.0)
 
         print(f"Tapping to attack with second pokemon")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
+        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
         utils.random_sleep(9.0, 2.0)
 
         print(f"Tapping to attack with third pokemon")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
+        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
         utils.random_sleep(11.0, 2.0)
     else:
         print(f"Clicking to get status of first loss")
         utils.random_sleep(2.0, 0.5)
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
+        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
         utils.random_sleep(15.0, 1.0)
 
         print(f"Clicking to get status of second loss")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
+        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
         utils.random_sleep(9.0, 2.0)
 
         print(f"Clicking to get status of third loss")
-        cliclick.random_click(ultra_league_coordiantes, pixel_randomness*4)
+        cliclick.random_click(ultra_league_coordiantes, pixel_randomness * 4)
         utils.random_sleep(11.0, 2.0)
 
     finish_battle_time_dt = datetime.datetime.now()
@@ -216,5 +212,3 @@ for i in range(num_battles):
     print(f"Tapping on rematch")
     cliclick.random_click(rematch_coordinates, pixel_randomness)
     utils.random_sleep(4.5, 1.0)
-
-

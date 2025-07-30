@@ -57,30 +57,33 @@ for i in range(num_trades):
     # Use if have two different seeds for the two traders
     #   (so that clicks won't be at the exact same time)
     #   but still keep them in sync
-    remaining_sleep_s = same_pseudo_rng.uniform(46, 55)
-    initial_remaining_sleep_s = remaining_sleep_s
+    trade_time_with_sleep_s = same_pseudo_rng.uniform(46, 55)
+    start_trade_dt = datetime.datetime.now()
 
     print(f"Clicking on start trade")
     cliclick.random_click(start_trade_coordinates, pixel_randomness)
-    remaining_sleep_s -= utils.random_sleep(8.0, 1.5)
+    utils.random_sleep(8.0, 1.5)
 
     print("Clicking on first pokemon available to trade")
     cliclick.random_click(first_trade_pokemon_coordinates, pixel_randomness)
-    remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
+    utils.random_sleep(5.0, 1.5)
 
     print("Clicking on next")
     cliclick.random_click(next_button_coordinates, pixel_randomness)
-    remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
+    utils.random_sleep(5.0, 1.5)
 
     print("Clicking on confirm")
     cliclick.random_click(confirm_button_coordinates, pixel_randomness)
-    remaining_sleep_s -= utils.random_sleep(20.0, 1.5)
+    utils.random_sleep(20.0, 1.5)
     utils.log_trade(LOG_FILE)
 
     print("Clicking on X")
     cliclick.random_click(x_button_coordinates, pixel_randomness)
-    remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
+    utils.random_sleep(5.0, 1.5)
 
-    print(f"That trade took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
-    print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
-    time.sleep(max(0, remaining_sleep_s))
+    finish_trade_dt = datetime.datetime.now()
+    trade_length_s = (finish_trade_dt - start_trade_dt).total_seconds()
+    post_trade_sleep_time_s = trade_time_with_sleep_s - trade_length_s
+    print(f"That trade took {trade_length_s:.2f}s")
+    print(f"Sleeping for {post_trade_sleep_time_s:.2f}s to keep traders in sync\n")
+    time.sleep(max(0, post_trade_sleep_time_s))

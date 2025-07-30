@@ -81,6 +81,6 @@ for i in range(num_trades):
     cliclick.random_click(x_button_coordinates, pixel_randomness)
     remaining_sleep_s -= utils.random_sleep(5.0, 1.5)
 
-    print(f"That trade took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s")
+    print(f"That trade took {(initial_remaining_sleep_s - remaining_sleep_s):.2f}s TESTTEST")
     print(f"Sleeping for {remaining_sleep_s:.2f}s to keep traders in sync\n")
     time.sleep(max(0, remaining_sleep_s))

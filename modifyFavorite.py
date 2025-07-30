@@ -8,7 +8,7 @@ Author: Matt Popovich (mattpopovich.com)
 import random
 import time
 import config
-from cliclick import Cliclick
+from functions.cliclick import Cliclick
 import datetime
 
 import functions.utils as utils

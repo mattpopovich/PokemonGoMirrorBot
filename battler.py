@@ -26,7 +26,7 @@ import sys
 
 # Custom imports
 import config
-from cliclick import Cliclick
+from functions.cliclick import Cliclick
 import functions.utils as utils
 
 # Parse arguments

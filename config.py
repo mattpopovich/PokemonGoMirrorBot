@@ -9,7 +9,7 @@ ACTIVE_SYSTEM = "iPhone15ProMaxWidescreen"
 systems = {
     "iPhone15ProMaxWidescreen": {  # Widescreen monitor
         "start_battle_coordinates": [3377, 1285],
-        "start_trade_coordinates": [3283, 1285],
+        "start_trade_coordinates": [3227, 1263],
         "first_trade_pokemon_coordinates": [3161, 953],
         # "between_first_second_pokemon": [3213, 947],  # Whitespace
         "next_button_coordinates": [3268, 1321],
@@ -36,7 +36,7 @@ systems = {
     },
     "iPhone11ProMBAirLarger": {  # iPhone Mirroring -> View -> Larger
         "start_battle_coordinates": [1608, 871],
-        "start_trade_coordinates": [1493, 871],
+        "start_trade_coordinates": [1440, 849],
         "first_trade_pokemon_coordinates": [1366, 489],
         # "between_first_second_pokemon": [1420, 488],  # Unused
         "next_button_coordinates": [1487, 917],

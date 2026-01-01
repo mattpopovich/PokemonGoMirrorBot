@@ -2,6 +2,12 @@ import subprocess
 
 from functions.utils import randomize_location
 
+# TODO: Handle cliclick not being installed
+# TODO: Handle cliclick not having permissions:
+# WARNING: Accessibility privileges not enabled. Many actions may fail.
+#          Enable the checkbox for the containing app in:
+#          System Preferences → Security & Privacy → Accessibility
+
 
 class Cliclick:
     def __init__(self, executable="cliclick"):

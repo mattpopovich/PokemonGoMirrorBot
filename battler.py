@@ -25,7 +25,7 @@ import argparse
 import sys
 
 # Custom imports
-import config
+from configs.iPhone11 import coordinates
 from functions.cliclick import Cliclick
 import functions.utils as utils
 
@@ -63,20 +63,20 @@ if args.great + args.ultra + args.master != 1:
     sys.exit("ERROR: must specify one of --great, --ultra, or --master")
 
 # Access the coordinates from the active system
-lets_do_it_coordinates = config.SETTINGS["lets_do_it_coordinates"]
-start_battle_coordinates = config.SETTINGS["start_battle_coordinates"]
-great_league_coordinates = config.SETTINGS["great_league_coordinates"]
-ultra_league_coordinates = config.SETTINGS["ultra_league_coordinates"]
-master_league_coordinates = config.SETTINGS["master_league_coordinates"]
-lets_battle_coordinates = config.SETTINGS["lets_battle_coordinates"]
-use_party_coordinates = config.SETTINGS["use_party_coordinates"]
-rematch_coordinates = config.SETTINGS["rematch_coordinates"]
-first_pokemon_in_party_coordinates = config.SETTINGS["first_pokemon_in_party_coordinates"]
-first_pokemon_coordinates = config.SETTINGS["first_pokemon_coordinates"]
-second_pokemon_coordinates = config.SETTINGS["second_pokemon_coordinates"]
-third_pokemon_coordinates = config.SETTINGS["third_pokemon_coordinates"]
-done_button_coordinates = config.SETTINGS["done_button_coordinates"]
-change_prng = config.SETTINGS["change_prng"]
+lets_do_it_coordinates = coordinates["lets_do_it_coordinates"]
+start_battle_coordinates = coordinates["start_battle_coordinates"]
+great_league_coordinates = coordinates["great_league_coordinates"]
+ultra_league_coordinates = coordinates["ultra_league_coordinates"]
+master_league_coordinates = coordinates["master_league_coordinates"]
+lets_battle_coordinates = coordinates["lets_battle_coordinates"]
+use_party_coordinates = coordinates["use_party_coordinates"]
+rematch_coordinates = coordinates["rematch_coordinates"]
+first_pokemon_in_party_coordinates = coordinates["first_pokemon_in_party_coordinates"]
+first_pokemon_coordinates = coordinates["first_pokemon_coordinates"]
+second_pokemon_coordinates = coordinates["second_pokemon_coordinates"]
+third_pokemon_coordinates = coordinates["third_pokemon_coordinates"]
+done_button_coordinates = coordinates["done_button_coordinates"]
+change_prng = coordinates["change_prng"]
 
 pixel_randomness = 10
 

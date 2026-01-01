@@ -2,7 +2,7 @@
 ### Cliclick is needed to run the scripts, and that is only available on macOS.
 
 # Get current python image
-FROM python:3.12.11-bullseye
+FROM python:3.13.6-bullseye
 
 # Update image
 RUN apt-get update && apt-get upgrade -y

@@ -7,16 +7,16 @@ Author: Matt Popovich (mattpopovich.com)
 
 import random
 import time
-import config
+from configs.iPhone11 import coordinates
 from functions.cliclick import Cliclick
 import datetime
 
 import functions.utils as utils
 
 # Access the coordinates from the active system
-start_drag_next_poke = config.SETTINGS["start_drag_next_poke"]
-end_drag_next_poke = config.SETTINGS["end_drag_next_poke"]
-modify_favorite = config.SETTINGS["modify_favorite"]
+start_drag_next_poke = coordinates["start_drag_next_poke"]
+end_drag_next_poke = coordinates["end_drag_next_poke"]
+modify_favorite = coordinates["modify_favorite"]
 
 pixel_randomness = 10
 

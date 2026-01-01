@@ -13,17 +13,17 @@ import time
 import datetime
 
 # Custom imports
-import config
+from configs.iPhone11 import coordinates
 from functions.cliclick import Cliclick
 import functions.utils as utils
 
 # Access the coordinates from the active system
-start_trade_coordinates = config.SETTINGS["start_trade_coordinates"]
-first_trade_pokemon_coordinates = config.SETTINGS["first_trade_pokemon_coordinates"]
-next_button_coordinates = config.SETTINGS["next_button_coordinates"]
-confirm_button_coordinates = config.SETTINGS["confirm_button_coordinates"]
-x_button_coordinates = config.SETTINGS["x_button_coordinates"]
-change_prng = config.SETTINGS["change_prng"]
+start_trade_coordinates = coordinates["start_trade_coordinates"]
+first_trade_pokemon_coordinates = coordinates["first_trade_pokemon_coordinates"]
+next_button_coordinates = coordinates["next_button_coordinates"]
+confirm_button_coordinates = coordinates["confirm_button_coordinates"]
+x_button_coordinates = coordinates["x_button_coordinates"]
+change_prng = coordinates["change_prng"]
 
 pixel_randomness = 10
 LOG_FILE = "trader_log.txt"

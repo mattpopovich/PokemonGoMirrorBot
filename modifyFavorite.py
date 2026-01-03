@@ -7,7 +7,7 @@ Author: Matt Popovich (mattpopovich.com)
 
 import random
 import time
-from configs.iPhone11 import coordinates
+from configs import coordinates
 from functions.cliclick import Cliclick
 import datetime
 

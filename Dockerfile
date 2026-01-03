@@ -8,7 +8,7 @@ FROM python:3.13.6-bullseye
 RUN apt-get update && apt-get upgrade -y
 
 # Unit testing
-RUN pip3 install --upgrade pytest
+RUN pip3 install --upgrade pytest pyyaml
 
 # Set working directory
 WORKDIR /app

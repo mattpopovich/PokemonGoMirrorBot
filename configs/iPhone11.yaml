@@ -1,0 +1,87 @@
+# This is a config file for screen mirroring with an iPhone 11 with a "Larger"
+# view window. To use this with an iPhone 11, the only thing you should modify
+# is the `anchor` variable.
+
+# Red 'x' in the top left of the mirroring window
+anchor:
+  # MacBook Air
+  x: 1311
+  y: 213
+
+# Individual offset values with a "larger" view
+#   iPhone Mirroring -> View -> Larger
+offsets:
+  start_battle:
+    x: 286
+    y: 633
+  start_trade:
+    x: 129
+    y: 636
+  first_trade_pokemon:
+    x: 55
+    y: 276
+  between_first_second_pokemon: # unused
+    x: 109
+    y: 275
+  next_button:
+    x: 176
+    y: 704
+  confirm_button:
+    x: 36
+    y: 437
+  pokemon_details_left_health_white:  # unused
+    x: 39
+    y: 366
+  x_button:
+    x: 175
+    y: 782
+  start_drag_next_poke:
+    x: 322
+    y: 497
+  end_drag_next_poke:
+    x: 29
+    y: 497
+  modify_favorite:
+    x: 325
+    y: 81
+  lets_do_it:
+    x: 172
+    y: 515
+  great_league:
+    x: 174
+    y: 391
+  ultra_league:
+    x: 175
+    y: 507
+  master_league:
+    x: 176
+    y: 628
+  lets_battle:
+    x: 171
+    y: 506
+  first_pokemon_in_party:
+    x: 73
+    y: 615
+  use_party:
+    x: 188
+    y: 746
+  rematch:
+    x: 171
+    y: 537
+  sort_button:  # unused
+    x: 310
+    y: 702
+  first_pokemon:
+    x: 56
+    y: 353
+  second_pokemon:
+    x: 174
+    y: 353
+  third_pokemon:
+    x: 291
+    y: 353
+  done_button:
+    x: 260
+    y: 796
+
+change_prng: False

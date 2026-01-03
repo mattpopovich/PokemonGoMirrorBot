@@ -1,0 +1,89 @@
+# This is a config file for screen mirroring with an iPhone 15 Pro Max.
+# To use this with an iPhone 15 Pro Max, the only thing you should modify is the `anchor` variable.
+
+# Red 'x' in the top left of the mirroring window
+anchor:
+  # For 36" widescreen monitor
+  # x: 3115
+  # y: 695
+
+  # For 1080p monitor
+  x: 1595
+  y: 335
+
+# Individual offset values
+offsets:
+  start_battle:
+    x: 262
+    y: 590
+  start_trade:  # TODO: Update this since remote trades were added
+    x: 112
+    y: 568
+  first_trade_pokemon:
+    x: 46
+    y: 258
+  between_first_second_pokemon: # unused
+    x: 98
+    y: 252
+  next_button:
+    x: 153
+    y: 626
+  confirm_button:
+    x: 26
+    y: 391
+  pokemon_details_left_health_white:  # unused
+    x: 31
+    y: 326
+  x_button:
+    x: 153
+    y: 694
+  start_drag_next_poke:
+    x: 281
+    y: 437
+  end_drag_next_poke:
+    x: 32
+    y: 437
+  modify_favorite:
+    x: 286
+    y: 75
+  lets_do_it:
+    x: 150
+    y: 459
+  great_league:
+    x: 157
+    y: 347
+  ultra_league:
+    x: 157
+    y: 452
+  master_league:
+    x: 157
+    y: 556
+  lets_battle:
+    x: 150
+    y: 451
+  first_pokemon_in_party:
+    x: 63
+    y: 547
+  use_party:
+    x: 151
+    y: 664
+  rematch:
+    x: 153
+    y: 479
+  sort_button:  # unused
+    x: 273
+    y: 625
+  first_pokemon:
+    x: 45
+    y: 331
+  second_pokemon:
+    x: 152
+    y: 331
+  third_pokemon:
+    x: 258
+    y: 331
+  done_button:
+    x: 228
+    y: 707
+
+change_prng: False

@@ -2,10 +2,10 @@
 PokemonGo Bot via screen mirroring
 
 ### About
-Using [screen mirroring](https://support.apple.com/en-us/120421), click on repeatable locations with random delays and random click accuracy.
+Using iPhone/Mac [screen mirroring](https://support.apple.com/en-us/120421), click on repeatable locations with random delays and random click accuracy in order to automate repetitive PokemonGo Tasks.
 
 ### Configuration
-Edit the coordinates for your system in [`config.py`](config.py). I'd recommend placing the screen mirroring application in an easily repeatable location (Ex. bottom right of screen).
+Edit the `anchor` point for your system in one of the `.yaml` files in [`configs/`](/configs). I'd recommend placing the screen mirroring application in an easily repeatable location (Ex. bottom right of screen). The anchor point should be the center of the red 'x' on the top left of the screen mirroring window.
 
 The coordinates of the current mouse position can be easily obtained via `cmd` + `shift` + `4`.
 <!--
@@ -17,7 +17,18 @@ The easiest way to find out the color at a certain location is by using macOS's 
 
 ### Dependencies
 * Python
-* [cliclick](https://github.com/BlueM/cliclick)
+* [cliclick](https://github.com/BlueM/cliclick) ([`brew install cliclick`](https://formulae.brew.sh/formula/cliclick))
+* [pyyaml](https://pypi.org/project/PyYAML/)
+  * ```shell
+    python3 -m venv myenv
+    source myenv/bin/activate
+    pip3 install pyyaml
+    ```
+
+### Examples
+* `CONFIG=iPhone11.yaml python3 trader.py`
+* `CONFIG=iPhoneMax.yaml python3 modifyFavorite.py`
+* `python3 battler.py --master --lose` and `python3 battler.py --win`
 
 ### Supported bot actions
 * Trading

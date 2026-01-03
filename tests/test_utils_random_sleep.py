@@ -1,5 +1,5 @@
 """
-Test utils.py's randomize_location function.
+Test utils.py's random_sleep function.
 """
 
 from functions.utils import random_sleep

@@ -25,7 +25,7 @@ import argparse
 import sys
 
 # Custom imports
-from configs.iPhone11 import coordinates
+from configs import coordinates
 from functions.cliclick import Cliclick
 import functions.utils as utils
 

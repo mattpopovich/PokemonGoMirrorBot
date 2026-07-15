@@ -44,14 +44,35 @@ The easiest way to find out the color at a certain location is by using macOS's 
   * `distance11-&distance99`
 * See all pokemon that were caught further than 101km away (3 trade candies)
   * `distance101-`
+* See all pokemon that you only have one of 
+  * `count1`
+* See all pokemon that you have >=3 of 
+  * `count3-`
+    * Note that this does not consider hisuian or galarian separately. Ex. if you have 3 regular and 3 galarian, that pokemon will be returned for `count6-`
+* See all pokemon that you have <3 of
+  * `!count3-`
+* See all pokemon except for nundos and hundos
+  * `1-4attack,1-4defense,1-4hp&!4*`
+* See all nundos and hundos 
+  * `4*,0attack&4*,0defense&4*,0hp`
+
+**Note that eggs in incubators count as Pokemon in your inventory but they will not show up in any search strings**
+
+Helpful sites for PokemonGo search strings: 
+* <https://mongo.lebeg134.hu/#>
+* <https://its-snooze.github.io/pogosearch>
 
 ### My routine
-* First, I check for nundos with the search string `0attack&0defense&0hp` and favorite them
+* First, I check for nundos, hundos, and any pokemon that I have mega evolved before with the search string `4*,mega1-4,0attack&4*,mega1-4,0defense&4*,mega1-4,0hp&!favorite` and favorite them (note that `!mega1-4` [does not work correctly](https://www.reddit.com/r/TheSilphRoad/comments/16bpo7m/exclude_mega_pokemons_with_string/jzem709/))
 * Second, I search to see which pokemon I can evolve with 0 candy and I will either evolve them or save them for evolution later (just make sure that I evolve them before transferring)
 * Then, I will go through recently acquired pokemon and "favorite" any that are strong
+  * I've since stopped doing this... it takes too much time
 * Next, I apply a tag named "transfer" to all the pokemon that I am okay with transferring away
-  * `!@special&!lucky&!legendary&!mythical&!costume&!ultra beasts&!shiny&!xxl&!xxs&!candyxl&!locationbackground&!specialbackground&!favorite&!shadow&!purified&!dynamax&!4*&!3*&!futureTransfer`
+  * `0-2attack,0-2defense,0-2hp,2*&1-4attack,1-4defense,1-4hp,2*&!@special&!lucky&!legendary&!mythical&!costume&!ultra beasts&!shiny&!xxl&!xxs&!candyxl&!locationbackground&!specialbackground&!background&!favorite&!shadow&!purified&!dynamax&!gigantamax&!4*&count6-&!futuretransfer`
+    * This excludes nundos, hundos, and 11+/11+/11+ IVs that are 3*. The other tags should be fairly obvious
     * `futureTransfer` = Pokemon that I don't want but are too good to throw away. I'll save them for whenever there is an enhanced lucky transfer rate.
+  * `1-4attack,1-4defense,1-4hp&!4*&!@special&!lucky&!legendary&!mythical&!costume&!ultra beasts&!shiny&!xxl&!xxs&!candyxl&!locationbackground&!specialbackground&!background&!favorite&!shadow&!purified&!dynamax&!gigantamax&!4*&count6-&!futuretransfer`
+    * Same as the above but the only IVs that it excludes are nundos and hundos
 * Finally, I will trade any pokemon with the "transfer" tag to a friend
   * Use the distance search string above to your advantage to maximize 100+km transfers and 10+km transfers.
   * Any pokemon that matches `transfer&traded` can be transferred to the professor. I will transfer them all to the professor whenever there is an enhanced transfer candy rate.
